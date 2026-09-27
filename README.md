@@ -1,4 +1,4 @@
-Shyam Ortho Care – Doctor Appointment Management System
+Doctor Appointment Management System
 
 A full-stack Doctor Appointment Management System built to manage patients, doctors, appointments, time slots, notifications, and administrative operations in one application.
 
