@@ -1,0 +1,510 @@
+<div class="admin-page">
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <header class="admin-header">
+
+    <div class="admin-header-inner">
+
+      <div class="admin-brand">
+
+        <div class="admin-logo">
+          SOC
+        </div>
+
+        <div>
+
+          <h2>
+            Shyam Ortho Care
+          </h2>
+
+          <span>
+            Administration
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <nav class="admin-nav">
+
+        <a
+          routerLink="/admin/dashboard">
+
+          Dashboard
+
+        </a>
+
+        <a
+          routerLink="/admin/doctors"
+          class="active">
+
+          Manage Doctors
+
+        </a>
+
+        <a
+          routerLink="/login">
+
+          Logout
+
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+       ========================================= -->
+
+  <main class="container admin-main">
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="page-heading">
+
+      <div>
+
+        <span class="page-badge">
+          ADMINISTRATOR
+        </span>
+
+        <h1>
+          Add Doctor
+        </h1>
+
+        <p>
+          Create a new doctor account and
+          professional profile.
+        </p>
+
+      </div>
+
+
+      <a
+        routerLink="/admin/dashboard"
+        class="back-button">
+
+        ← Dashboard
+
+      </a>
+
+    </section>
+
+
+    <!-- =========================================
+         ALERTS
+         ========================================= -->
+
+    <div
+      *ngIf="errorMessage"
+      class="alert alert-error">
+
+      {{ errorMessage }}
+
+    </div>
+
+
+    <div
+      *ngIf="successMessage"
+      class="alert alert-success">
+
+      {{ successMessage }}
+
+    </div>
+
+
+    <!-- =========================================
+         FORM
+         ========================================= -->
+
+    <form
+      class="doctor-form"
+      (ngSubmit)="createDoctor()">
+
+
+      <!-- ACCOUNT INFORMATION -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+            👤
+          </div>
+
+          <div>
+
+            <h2>
+              Account Information
+            </h2>
+
+            <p>
+              Login details for the doctor.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- NAME -->
+
+          <div class="form-group">
+
+            <label for="name">
+              Doctor Name *
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              name="name"
+              [(ngModel)]="doctor.name"
+              placeholder="e.g. Dr. Rahul"
+              autocomplete="name"
+            />
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="form-group">
+
+            <label for="email">
+              Email Address *
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              name="email"
+              [(ngModel)]="doctor.email"
+              placeholder="doctor@example.com"
+              autocomplete="email"
+            />
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="form-group">
+
+            <label for="phone">
+              Phone Number *
+            </label>
+
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              [(ngModel)]="doctor.phone"
+              placeholder="9876543210"
+              autocomplete="tel"
+            />
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="form-group">
+
+            <label for="password">
+              Temporary Password *
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              name="password"
+              [(ngModel)]="doctor.password"
+              placeholder="Minimum 6 characters"
+              autocomplete="new-password"
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           PROFESSIONAL INFORMATION
+           ========================================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+            🩺
+          </div>
+
+          <div>
+
+            <h2>
+              Professional Information
+            </h2>
+
+            <p>
+              Doctor's professional details.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- SPECIALIZATION -->
+
+          <div class="form-group">
+
+            <label for="specialization">
+              Specialization *
+            </label>
+
+            <input
+              id="specialization"
+              type="text"
+              name="specialization"
+              [(ngModel)]="doctor.specialization"
+              placeholder="e.g. Orthopedics"
+            />
+
+          </div>
+
+
+          <!-- EXPERIENCE -->
+
+          <div class="form-group">
+
+            <label for="experience">
+              Experience *
+            </label>
+
+            <input
+              id="experience"
+              type="text"
+              name="experience"
+              [(ngModel)]="doctor.experience"
+              placeholder="e.g. 8 Years"
+            />
+
+          </div>
+
+
+          <!-- QUALIFICATION -->
+
+          <div class="form-group">
+
+            <label for="qualification">
+              Qualification *
+            </label>
+
+            <input
+              id="qualification"
+              type="text"
+              name="qualification"
+              [(ngModel)]="doctor.qualification"
+              placeholder="e.g. MBBS, MS Orthopedics"
+            />
+
+          </div>
+
+
+          <!-- HOSPITAL -->
+
+          <div class="form-group">
+
+            <label for="hospital">
+              Hospital / Clinic *
+            </label>
+
+            <input
+              id="hospital"
+              type="text"
+              name="hospital"
+              [(ngModel)]="doctor.hospital"
+              placeholder="e.g. Shyam Ortho Care"
+            />
+
+          </div>
+
+
+          <!-- CONSULTATION FEE -->
+
+          <div class="form-group">
+
+            <label for="consultationFee">
+              Consultation Fee *
+            </label>
+
+            <input
+              id="consultationFee"
+              type="number"
+              name="consultationFee"
+              [(ngModel)]="doctor.consultationFee"
+              min="0"
+              placeholder="500"
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           AVAILABILITY
+           ========================================= -->
+
+      <section class="form-section">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+            🕐
+          </div>
+
+          <div>
+
+            <h2>
+              Availability
+            </h2>
+
+            <p>
+              Set the doctor's working hours.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- FROM -->
+
+          <div class="form-group">
+
+            <label for="availableFrom">
+              Available From *
+            </label>
+
+            <input
+              id="availableFrom"
+              type="time"
+              name="availableFrom"
+              [(ngModel)]="doctor.availableFrom"
+            />
+
+          </div>
+
+
+          <!-- TO -->
+
+          <div class="form-group">
+
+            <label for="availableTo">
+              Available To *
+            </label>
+
+            <input
+              id="availableTo"
+              type="time"
+              name="availableTo"
+              [(ngModel)]="doctor.availableTo"
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================================
+           ACTIONS
+           ========================================= -->
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="secondary-button"
+          (click)="resetForm()"
+          [disabled]="loading">
+
+          Reset
+
+        </button>
+
+
+        <a
+          routerLink="/admin/dashboard"
+          class="cancel-button">
+
+          Cancel
+
+        </a>
+
+
+        <button
+          type="submit"
+          class="primary-button"
+          [disabled]="loading">
+
+          <span *ngIf="!loading">
+            Create Doctor
+          </span>
+
+          <span *ngIf="loading">
+            Creating Doctor...
+          </span>
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer class="admin-footer">
+
+    <p>
+      © 2026 Shyam Ortho Care
+    </p>
+
+    <p>
+      Administration Portal
+    </p>
+
+  </footer>
+
+</div>

@@ -1,0 +1,294 @@
+<div class="appointments-page">
+
+  <!-- HEADER -->
+  <div class="page-header">
+
+    <div>
+      <span class="eyebrow">
+        SHYAM ORTHO CARE
+      </span>
+
+      <h1>
+        My Appointments
+      </h1>
+
+      <p>
+        View and manage your upcoming consultations.
+      </p>
+    </div>
+
+    <div class="header-actions">
+
+      <a
+        routerLink="/patient/slots"
+        class="btn-primary">
+        Book Appointment
+      </a>
+
+      <a
+        routerLink="/patient/dashboard"
+        class="btn-outline">
+        Dashboard
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- SUCCESS -->
+  <div
+    *ngIf="successMessage"
+    class="alert success">
+
+    {{ successMessage }}
+
+  </div>
+
+
+  <!-- ERROR -->
+  <div
+    *ngIf="errorMessage"
+    class="alert error">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- LOADING -->
+  <div
+    *ngIf="loading"
+    class="loading-card">
+
+    <div class="spinner"></div>
+
+    <p>
+      Loading your appointments...
+    </p>
+
+  </div>
+
+
+  <!-- EMPTY -->
+  <div
+    *ngIf="
+      !loading &&
+      appointments.length === 0 &&
+      !errorMessage
+    "
+    class="empty-card">
+
+    <div class="empty-icon">
+      📅
+    </div>
+
+    <h2>
+      No appointments found
+    </h2>
+
+    <p>
+      You don't have any appointments yet.
+    </p>
+
+    <a
+      routerLink="/patient/slots"
+      class="btn-primary">
+
+      Book Your Appointment
+
+    </a>
+
+  </div>
+
+
+  <!-- APPOINTMENTS -->
+  <div
+    *ngIf="
+      !loading &&
+      appointments.length > 0
+    "
+    class="appointments-grid">
+
+    <div
+      class="appointment-card"
+      *ngFor="let appointment of appointments">
+
+      <!-- CARD HEADER -->
+      <div class="appointment-top">
+
+        <div>
+
+          <span class="appointment-label">
+            Appointment
+          </span>
+
+          <h2>
+            #{{ $any(appointment).appointmentId }}
+          </h2>
+
+        </div>
+
+        <span
+          class="status"
+          [ngClass]="{
+            'pending': appointment.status === 'PENDING',
+            'confirmed': appointment.status === 'CONFIRMED',
+            'cancelled': appointment.status === 'CANCELLED',
+            'completed': appointment.status === 'COMPLETED'
+          }">
+
+          {{ appointment.status }}
+
+        </span>
+
+      </div>
+
+
+      <!-- DOCTOR -->
+      <div class="doctor-section">
+
+        <div class="doctor-icon">
+          🩺
+        </div>
+
+        <div>
+
+          <span>
+            Doctor
+          </span>
+
+          <h3>
+            {{
+              appointment.doctorName ||
+              'Dr. Shyakm'
+            }}
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <!-- DETAILS -->
+      <div class="details-grid">
+
+        <div class="detail">
+
+          <span>
+            Date
+          </span>
+
+          <strong>
+            {{ appointment.appointmentDate }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>
+            Time
+          </span>
+
+          <strong>
+            {{ appointment.appointmentTime }}
+          </strong>
+
+        </div>
+
+
+        <div
+          class="detail"
+          *ngIf="appointment.consultationFee !== undefined">
+
+          <span>
+            Consultation Fee
+          </span>
+
+          <strong>
+            ₹{{ appointment.consultationFee }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATUS MESSAGE -->
+
+      <div
+        *ngIf="appointment.status === 'PENDING'"
+        class="status-message pending-message">
+
+        Your appointment is waiting for doctor confirmation.
+
+      </div>
+
+
+      <div
+        *ngIf="appointment.status === 'CONFIRMED'"
+        class="status-message confirmed-message">
+
+        Your appointment has been confirmed by the doctor.
+
+      </div>
+
+
+      <div
+        *ngIf="appointment.status === 'COMPLETED'"
+        class="status-message completed-message">
+
+        This consultation has been completed.
+
+      </div>
+
+
+      <div
+        *ngIf="appointment.status === 'CANCELLED'"
+        class="status-message cancelled-message">
+
+        This appointment has been cancelled.
+
+      </div>
+
+
+      <!-- ACTION -->
+      <div class="appointment-actions">
+
+        <button
+          *ngIf="
+            appointment.status === 'PENDING' ||
+            appointment.status === 'CONFIRMED'
+          "
+          type="button"
+          class="cancel-btn"
+
+          [disabled]="
+            processingAppointmentId ===
+            $any(appointment).appointmentId
+          "
+
+          (click)="
+            cancelAppointment(
+              $any(appointment).appointmentId
+            )
+          ">
+
+          {{
+            processingAppointmentId ===
+            $any(appointment).appointmentId
+              ? 'Cancelling...'
+              : 'Cancel Appointment'
+          }}
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

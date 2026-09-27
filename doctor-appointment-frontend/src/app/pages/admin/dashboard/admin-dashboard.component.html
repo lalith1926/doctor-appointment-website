@@ -1,0 +1,380 @@
+<div class="admin-dashboard">
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <header class="admin-header">
+
+    <div class="admin-header-inner">
+
+      <div class="admin-brand">
+
+        <div class="admin-logo">
+          SOC
+        </div>
+
+        <div>
+          <h2>Shyam Ortho Care</h2>
+          <span>Administration</span>
+        </div>
+
+      </div>
+
+
+      <nav class="admin-nav">
+
+        <a
+          routerLink="/admin/dashboard"
+          class="active">
+          Dashboard
+        </a>
+
+        <a
+          routerLink="/admin/doctors">
+          Manage Doctors
+        </a>
+
+        <a routerLink="/login">
+          Logout
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+       ========================================= -->
+
+  <main class="container admin-main">
+
+    <!-- Welcome -->
+
+    <section class="admin-welcome">
+
+      <div>
+
+        <span class="admin-badge">
+          ADMINISTRATOR
+        </span>
+
+        <h1>
+          Welcome, Admin
+        </h1>
+
+        <p>
+          Manage doctors and clinic operations
+          from one place.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ERROR
+         ========================================= -->
+
+    <div
+      *ngIf="errorMessage"
+      class="admin-error">
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+      <button
+        type="button"
+        (click)="loadDashboardStats()">
+
+        Try Again
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================
+         STATISTICS
+         ========================================= -->
+
+    <section class="admin-section">
+
+      <h2>
+        Clinic Overview
+      </h2>
+
+
+      <!-- LOADING -->
+
+      <div
+        *ngIf="loading"
+        class="admin-stats-grid">
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            👨‍⚕️
+          </div>
+
+          <div>
+
+            <span>
+              Doctors
+            </span>
+
+            <strong>
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              Patients
+            </span>
+
+            <strong>
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            📅
+          </div>
+
+          <div>
+
+            <span>
+              Appointments
+            </span>
+
+            <strong>
+              —
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STATISTICS -->
+
+      <div
+        *ngIf="!loading"
+        class="admin-stats-grid">
+
+
+        <!-- DOCTORS -->
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            👨‍⚕️
+          </div>
+
+          <div>
+
+            <span>
+              Doctors
+            </span>
+
+            <strong>
+              {{ doctorCount }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- PATIENTS -->
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            👥
+          </div>
+
+          <div>
+
+            <span>
+              Patients
+            </span>
+
+            <strong>
+              {{ patientCount }}
+            </strong>
+
+          </div>
+
+        </div>
+
+
+        <!-- APPOINTMENTS -->
+
+        <div class="admin-stat-card">
+
+          <div class="admin-stat-icon">
+            📅
+          </div>
+
+          <div>
+
+            <span>
+              Appointments
+            </span>
+
+            <strong>
+              {{ appointmentCount }}
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         MANAGEMENT
+         ========================================= -->
+
+    <section class="admin-section">
+
+      <h2>
+        Doctor Management
+      </h2>
+
+
+      <div class="admin-actions-grid">
+
+
+        <a
+          routerLink="/admin/doctors/add"
+          class="admin-action-card">
+
+          <div class="admin-action-icon">
+            ➕
+          </div>
+
+          <div>
+
+            <h3>
+              Add Doctor
+            </h3>
+
+            <p>
+              Create a new doctor account and
+              professional profile.
+            </p>
+
+          </div>
+
+        </a>
+
+
+        <a
+          routerLink="/admin/doctors"
+          class="admin-action-card">
+
+          <div class="admin-action-icon">
+            👨‍⚕️
+          </div>
+
+          <div>
+
+            <h3>
+              Manage Doctors
+            </h3>
+
+            <p>
+              View and manage all doctors
+              registered in the clinic.
+            </p>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         INFORMATION
+         ========================================= -->
+
+    <section class="admin-section">
+
+      <div class="admin-info-card">
+
+        <div class="admin-info-icon">
+          🔐
+        </div>
+
+        <div>
+
+          <h3>
+            Administrator Access
+          </h3>
+
+          <p>
+            Only users with the ADMIN role can
+            access doctor management functions.
+            Doctor accounts are created by the
+            administrator.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer class="admin-footer">
+
+    <p>
+      © 2026 Shyam Ortho Care
+    </p>
+
+    <p>
+      Administration Portal
+    </p>
+
+  </footer>
+
+</div>

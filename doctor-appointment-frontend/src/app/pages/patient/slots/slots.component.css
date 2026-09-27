@@ -1,0 +1,620 @@
+/* =========================================
+   SHYAM ORTHO CARE - PATIENT SLOTS
+   ========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+  max-width: 1180px;
+}
+
+
+/* =========================================
+   PAGE HEADER
+   ========================================= */
+
+.clinic-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+  padding: 28px 30px;
+  background: #ffffff;
+  border: 1px solid #e5edf5;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(31, 65, 95, 0.07);
+}
+
+.clinic-page-header h2 {
+  color: #17324d;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.clinic-page-header p {
+  font-size: 14px;
+}
+
+.clinic-page-header > div > p {
+  max-width: 650px;
+}
+
+
+/* =========================================
+   ICON
+   ========================================= */
+
+.clinic-action-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf5fc;
+  border: 1px solid #d5eaf8;
+  border-radius: 14px;
+
+  font-size: 25px;
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.btn {
+  min-height: 44px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn-primary {
+  background: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #12598f;
+  border-color: #12598f;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 16px rgba(23, 105, 170, 0.22);
+}
+
+.btn-outline-primary {
+  color: #1769aa;
+  border-color: #1769aa;
+  background: #ffffff;
+}
+
+.btn-outline-primary:hover {
+  background: #1769aa;
+  border-color: #1769aa;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   ALERTS
+   ========================================= */
+
+.alert {
+  border-radius: 12px;
+  border: none;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert-success {
+  background: #eaf8f0;
+  color: #176b3a;
+}
+
+.alert-danger {
+  background: #fff0f0;
+  color: #a62b2b;
+}
+
+
+/* =========================================
+   DATE SELECTOR CARD
+   ========================================= */
+
+.card {
+  border: 1px solid #e3ebf3;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow: 0 7px 22px rgba(31, 65, 95, 0.06);
+}
+
+.card-body {
+  color: #243b53;
+}
+
+.form-label {
+  color: #17324d;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  min-height: 46px;
+  border: 1px solid #d5e0ea;
+  border-radius: 10px;
+  padding: 10px 13px;
+  color: #243b53;
+  background: #ffffff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #1769aa;
+  box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+small.text-muted {
+  display: block;
+  margin-top: 7px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   SECTION TITLE
+   ========================================= */
+
+h4 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+h5 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   LOADING STATE
+   ========================================= */
+
+.spinner-border {
+  color: #1769aa;
+}
+
+.card .spinner-border {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+
+/* =========================================
+   NO SLOTS
+   ========================================= */
+
+.card-body.text-center.py-5 .clinic-action-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 17px;
+  font-size: 29px;
+}
+
+.card-body.text-center.py-5 p {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   APPOINTMENT SLOT CARDS
+   ========================================= */
+
+.row > .col-md-6 > .card,
+.row > .col-lg-4 > .card {
+  height: 100%;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.row > .col-md-6 > .card:hover,
+.row > .col-lg-4 > .card:hover {
+  transform: translateY(-4px);
+  border-color: #c8ddec;
+  box-shadow: 0 14px 30px rgba(31, 65, 95, 0.11);
+}
+
+
+/* =========================================
+   APPOINTMENT TIME
+   ========================================= */
+
+.clinic-appointment-time {
+  color: #1769aa;
+  font-size: 27px;
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.text-muted.small {
+  font-size: 12px;
+  color: #72869a !important;
+}
+
+
+/* =========================================
+   AVAILABLE BADGE
+   ========================================= */
+
+.badge.bg-success {
+  background: #e8f7ef !important;
+  color: #167346 !important;
+  border: 1px solid #c9ecd8;
+  border-radius: 20px;
+  padding: 7px 11px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+hr {
+  margin: 0 0 18px;
+  border: 0;
+  border-top: 1px solid #edf1f5;
+  opacity: 1;
+}
+
+
+/* =========================================
+   APPOINTMENT DETAILS
+   ========================================= */
+
+.fw-semibold {
+  color: #243b53;
+  font-size: 14px;
+}
+
+.mb-3 > .text-muted.small {
+  margin-bottom: 3px;
+}
+
+.mb-3 > .fw-semibold {
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   BOOK BUTTON
+   ========================================= */
+
+.card .btn-primary {
+  margin-top: 10px;
+  min-height: 46px;
+}
+
+.card .btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* =========================================
+   FOOTER SECURITY NOTE
+   ========================================= */
+
+.text-center.mt-2.mb-4 {
+  padding: 8px 0 4px;
+}
+
+.text-center.mt-2.mb-4 p {
+  color: #7a8da0 !important;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+   ========================================= */
+
+@media (max-width: 767px) {
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .clinic-page-header {
+    padding: 22px;
+    margin-bottom: 22px;
+  }
+
+  .clinic-page-header h2 {
+    font-size: 23px;
+  }
+
+  .clinic-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .clinic-page-header > a {
+    width: 100%;
+  }
+
+  .clinic-page-header .btn {
+    width: 100%;
+  }
+
+  .clinic-action-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 22px;
+  }
+
+  .card-body.p-4 {
+    padding: 20px !important;
+  }
+
+  .clinic-appointment-time {
+    font-size: 24px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .clinic-page-header {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .clinic-page-header h2 {
+    font-size: 21px;
+  }
+
+  .clinic-page-header p {
+    font-size: 13px;
+  }
+
+  .clinic-page-header .d-flex {
+    gap: 12px !important;
+  }
+
+  .clinic-action-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    border-radius: 11px;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+
+  .clinic-appointment-time {
+    font-size: 22px;
+  }
+
+  .badge.bg-success {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+
+  .form-control {
+    min-height: 44px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+}
+/* =========================================
+   HEADER CONTENT
+   ========================================= */
+
+.clinic-header-content {
+  flex: 1;
+}
+
+.clinic-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.clinic-header-actions .btn-light {
+  color: #17324d;
+  border: 1px solid #dce7f0;
+  background: #f8fbfe;
+}
+
+.clinic-header-actions .btn-light:hover {
+  color: #1769aa;
+  background: #eaf5fc;
+  border-color: #cfe2f1;
+}
+
+
+/* =========================================
+   SUCCESS / ERROR ICONS
+   ========================================= */
+
+.success-icon,
+.error-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.success-icon {
+  background: #c9ecd8;
+  color: #176b3a;
+}
+
+.error-icon {
+  background: #f6cccc;
+  color: #a62b2b;
+}
+
+
+/* =========================================
+   AVAILABLE HEADING
+   ========================================= */
+
+.available-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.doctor-indicator {
+  padding: 9px 14px;
+  background: #eaf5fc;
+  border: 1px solid #d5eaf8;
+  border-radius: 10px;
+  color: #1769aa;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   SLOT CARD
+   ========================================= */
+
+.slot-card {
+  overflow: hidden;
+}
+
+.slot-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.slot-card .btn-primary {
+  margin-top: auto;
+}
+
+
+/* =========================================
+   APPOINTMENT DETAILS
+   ========================================= */
+
+.appointment-detail {
+  line-height: 1.5;
+}
+
+.detail-label {
+  color: #72869a;
+  font-size: 12px;
+}
+
+
+/* =========================================
+   DATE SELECTOR
+   ========================================= */
+
+.date-selector-card {
+  position: relative;
+}
+
+.date-selector-card::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #1769aa;
+  border-radius: 17px 17px 0 0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 767px) {
+
+  .clinic-header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .clinic-header-actions .btn {
+    width: 100%;
+  }
+
+  .available-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .doctor-indicator {
+    width: 100%;
+    text-align: center;
+  }
+
+  .alert-success .btn {
+    flex-shrink: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .alert-success
+  .d-flex {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .alert-success .btn {
+    width: 100%;
+  }
+
+}

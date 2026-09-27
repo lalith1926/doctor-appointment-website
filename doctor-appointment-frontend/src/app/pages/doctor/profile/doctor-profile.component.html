@@ -1,0 +1,444 @@
+<div class="container py-4">
+
+  <!-- HEADER -->
+
+  <div class="clinic-page-header mb-4">
+
+    <div class="clinic-brand">
+
+      <span class="clinic-brand-icon">
+        🦴
+      </span>
+
+      <span class="clinic-brand-text">
+
+        <span class="clinic-brand-name">
+          Shyam Ortho Care
+        </span>
+
+        <span class="clinic-brand-subtitle">
+          Orthopaedic Care & Wellness
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="clinic-header-actions">
+
+      <a
+        routerLink="/doctor/dashboard"
+        class="btn btn-light clinic-nav-btn">
+
+        Dashboard
+
+      </a>
+
+
+      <a
+        routerLink="/doctor/slots"
+        class="btn btn-light clinic-nav-btn">
+
+        Manage Slots
+
+      </a>
+
+
+      <a
+        routerLink="/doctor/appointments"
+        class="btn btn-light clinic-nav-btn">
+
+        Appointments
+
+      </a>
+
+
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ERROR -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- SUCCESS -->
+
+  <div
+    *ngIf="successMessage"
+    class="alert alert-success">
+
+    {{ successMessage }}
+
+  </div>
+
+
+  <!-- LOADING -->
+
+  <div
+    *ngIf="loading"
+    class="text-center py-5">
+
+    <div class="spinner-border"></div>
+
+    <p class="text-muted mt-3">
+      Loading your profile...
+    </p>
+
+  </div>
+
+
+  <!-- PROFILE -->
+
+  <div *ngIf="!loading">
+
+
+    <div class="mb-4">
+
+      <span class="badge bg-primary mb-2">
+        DOCTOR PROFILE
+      </span>
+
+      <h1>
+        Edit Your Profile
+      </h1>
+
+      <p class="text-muted">
+        Keep your professional information up to date.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-body p-4">
+
+
+        <!-- PERSONAL INFORMATION -->
+
+        <h4 class="mb-3">
+          Personal Information
+        </h4>
+
+
+        <div class="row">
+
+
+          <!-- NAME -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="name"
+              class="form-label">
+
+              Full Name
+
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.name"
+              placeholder="Enter your name">
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="email"
+              class="form-label">
+
+              Email
+
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              [(ngModel)]="profile.email"
+              placeholder="Enter your email">
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="phone"
+              class="form-label">
+
+              Phone
+
+            </label>
+
+            <input
+              id="phone"
+              type="tel"
+              class="form-control"
+              [(ngModel)]="profile.phone"
+              placeholder="Enter your phone number">
+
+          </div>
+
+
+          <!-- SPECIALIZATION -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="specialization"
+              class="form-label">
+
+              Specialization
+
+            </label>
+
+            <input
+              id="specialization"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.specialization"
+              placeholder="Enter specialization">
+
+          </div>
+
+
+          <!-- EXPERIENCE -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="experience"
+              class="form-label">
+
+              Experience
+
+            </label>
+
+            <input
+              id="experience"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.experience"
+              placeholder="e.g. 10 years">
+
+          </div>
+
+
+          <!-- QUALIFICATION -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="qualification"
+              class="form-label">
+
+              Qualification
+
+            </label>
+
+            <input
+              id="qualification"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.qualification"
+              placeholder="e.g. MBBS, MS Orthopedics">
+
+          </div>
+
+
+          <!-- HOSPITAL -->
+
+          <div class="col-md-12 mb-3">
+
+            <label
+              for="hospital"
+              class="form-label">
+
+              Hospital / Clinic
+
+            </label>
+
+            <input
+              id="hospital"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.hospital"
+              placeholder="Enter hospital or clinic">
+
+          </div>
+
+
+          <!-- CONSULTATION FEE -->
+
+          <div class="col-md-4 mb-3">
+
+            <label
+              for="consultationFee"
+              class="form-label">
+
+              Consultation Fee
+
+            </label>
+
+            <div class="input-group">
+
+              <span class="input-group-text">
+                ₹
+              </span>
+
+              <input
+                id="consultationFee"
+                type="number"
+                min="0"
+                class="form-control"
+                [(ngModel)]="profile.consultationFee">
+
+            </div>
+
+          </div>
+
+
+          <!-- AVAILABLE FROM -->
+
+          <div class="col-md-4 mb-3">
+
+            <label
+              for="availableFrom"
+              class="form-label">
+
+              Available From
+
+            </label>
+
+            <input
+              id="availableFrom"
+              type="time"
+              class="form-control"
+              [(ngModel)]="profile.availableFrom">
+
+          </div>
+
+
+          <!-- AVAILABLE TO -->
+
+          <div class="col-md-4 mb-3">
+
+            <label
+              for="availableTo"
+              class="form-label">
+
+              Available To
+
+            </label>
+
+            <input
+              id="availableTo"
+              type="time"
+              class="form-control"
+              [(ngModel)]="profile.availableTo">
+
+          </div>
+
+        </div>
+
+
+        <hr class="my-4">
+
+
+        <!-- ACTIONS -->
+
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+
+          <a
+            routerLink="/doctor/dashboard"
+            class="btn btn-outline-secondary">
+
+            ← Back to Dashboard
+
+          </a>
+
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            [disabled]="saving"
+            (click)="saveProfile()">
+
+            <span
+              *ngIf="!saving">
+
+              Save Changes
+
+            </span>
+
+            <span
+              *ngIf="saving">
+
+              Saving...
+
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SECURITY -->
+
+    <div class="card mt-4">
+
+      <div class="card-body">
+
+        <h5>
+          🔐 Profile Security
+        </h5>
+
+        <p class="text-muted mb-0">
+
+          Your professional profile is private and
+          can only be updated while you are logged
+          into your doctor account.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

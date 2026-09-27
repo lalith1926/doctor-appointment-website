@@ -1,0 +1,495 @@
+<div class="admin-page">
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <header class="admin-header">
+
+    <div class="admin-header-inner">
+
+      <div class="admin-brand">
+
+        <div class="admin-logo">
+          SOC
+        </div>
+
+        <div>
+
+          <h2>
+            Shyam Ortho Care
+          </h2>
+
+          <span>
+            Administration
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <nav class="admin-nav">
+
+        <a
+          routerLink="/admin/dashboard">
+
+          Dashboard
+
+        </a>
+
+        <a
+          routerLink="/admin/doctors"
+          class="active">
+
+          Manage Doctors
+
+        </a>
+
+        <a
+          routerLink="/login">
+
+          Logout
+
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================
+       MAIN
+       ========================================= -->
+
+  <main class="container admin-main">
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-heading">
+
+      <div>
+
+        <span class="page-badge">
+          ADMINISTRATOR
+        </span>
+
+        <h1>
+          Manage Doctors
+        </h1>
+
+        <p>
+          View all doctors registered with
+          Shyam Ortho Care.
+        </p>
+
+      </div>
+
+
+      <div class="heading-actions">
+
+        <a
+          routerLink="/admin/dashboard"
+          class="secondary-button">
+
+          ← Dashboard
+
+        </a>
+
+
+        <a
+          routerLink="/admin/doctors/add"
+          class="primary-button">
+
+          + Add Doctor
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ERROR
+         ========================================= -->
+
+    <div
+      *ngIf="errorMessage"
+      class="alert alert-error">
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+      <button
+        type="button"
+        (click)="loadDoctors()">
+
+        Try Again
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================
+         LOADING
+         ========================================= -->
+
+    <section
+      *ngIf="loading"
+      class="loading-card">
+
+      <div class="spinner"></div>
+
+      <p>
+        Loading doctors...
+      </p>
+
+    </section>
+
+
+    <!-- =========================================
+         DOCTOR LIST
+         ========================================= -->
+
+    <section
+      *ngIf="!loading && !errorMessage"
+      class="doctors-section">
+
+
+      <!-- SUMMARY -->
+
+      <div class="list-summary">
+
+        <div>
+
+          <h2>
+            Doctors
+          </h2>
+
+          <p>
+            {{ doctors.length }}
+            doctor{{ doctors.length === 1 ? '' : 's' }}
+            registered
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="refresh-button"
+          (click)="loadDoctors()">
+
+          ↻ Refresh
+
+        </button>
+
+      </div>
+
+
+      <!-- EMPTY -->
+
+      <div
+        *ngIf="doctors.length === 0"
+        class="empty-card">
+
+        <div class="empty-icon">
+          👨‍⚕️
+        </div>
+
+        <h3>
+          No Doctors Found
+        </h3>
+
+        <p>
+          No doctor profiles are currently
+          registered.
+        </p>
+
+        <a
+          routerLink="/admin/doctors/add"
+          class="primary-button">
+
+          Add First Doctor
+
+        </a>
+
+      </div>
+
+
+      <!-- DOCTORS -->
+
+      <div
+        *ngIf="doctors.length > 0"
+        class="doctors-grid">
+
+
+        <article
+          *ngFor="let doctor of doctors"
+          class="doctor-card">
+
+
+          <!-- CARD HEADER -->
+
+          <div class="doctor-card-header">
+
+            <div class="doctor-avatar">
+              👨‍⚕️
+            </div>
+
+            <div class="doctor-title">
+
+              <h3>
+                {{ doctor.name }}
+              </h3>
+
+              <span class="doctor-specialization">
+                {{ doctor.specialization }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- ACCOUNT -->
+
+          <div class="doctor-details">
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Email
+              </span>
+
+              <span class="detail-value">
+                {{ doctor.email }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Phone
+              </span>
+
+              <span class="detail-value">
+                {{ doctor.phone }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Qualification
+              </span>
+
+              <span class="detail-value">
+                {{ doctor.qualification }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Experience
+              </span>
+
+              <span class="detail-value">
+                {{ doctor.experience }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Hospital
+              </span>
+
+              <span class="detail-value">
+                {{ doctor.hospital }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Consultation
+              </span>
+
+              <span class="detail-value fee">
+                ₹{{ doctor.consultationFee }}
+              </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+              <span class="detail-label">
+                Availability
+              </span>
+
+              <span class="detail-value">
+
+                {{ doctor.availableFrom }}
+                -
+                {{ doctor.availableTo }}
+
+              </span>
+
+            </div>
+
+
+            <!-- PATIENT COUNT -->
+
+            <div class="detail-row patient-count-row">
+
+              <span class="detail-label">
+                Patients
+              </span>
+
+              <span class="detail-value patient-count">
+                👥 {{ doctor.patientCount }}
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- CARD FOOTER -->
+
+          <div class="doctor-card-footer">
+
+            <div>
+
+              <span
+                *ngIf="doctor.active"
+                class="doctor-status active-status">
+
+                ● Active
+
+              </span>
+
+
+              <span
+                *ngIf="!doctor.active"
+                class="doctor-status inactive-status">
+
+                ● Inactive
+
+              </span>
+
+
+              <span class="doctor-id">
+
+                Doctor #{{ doctor.doctorId }}
+
+              </span>
+
+            </div>
+
+
+            <div class="doctor-actions">
+
+              <!-- REMOVE -->
+
+              <button
+                *ngIf="doctor.active"
+                type="button"
+                class="remove-doctor-button"
+                [disabled]="actionLoadingId === doctor.doctorId"
+                (click)="deactivateDoctor(doctor)">
+
+                <span
+                  *ngIf="actionLoadingId !== doctor.doctorId">
+
+                  Remove
+
+                </span>
+
+
+                <span
+                  *ngIf="actionLoadingId === doctor.doctorId">
+
+                  Removing...
+
+                </span>
+
+              </button>
+
+
+              <!-- RESTORE -->
+
+              <button
+                *ngIf="!doctor.active"
+                type="button"
+                class="restore-doctor-button"
+                [disabled]="actionLoadingId === doctor.doctorId"
+                (click)="activateDoctor(doctor)">
+
+                <span
+                  *ngIf="actionLoadingId !== doctor.doctorId">
+
+                  Restore
+
+                </span>
+
+
+                <span
+                  *ngIf="actionLoadingId === doctor.doctorId">
+
+                  Restoring...
+
+                </span>
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+
+  <footer class="admin-footer">
+
+    <p>
+      © 2026 Shyam Ortho Care
+    </p>
+
+    <p>
+      Administration Portal
+    </p>
+
+  </footer>
+
+</div>

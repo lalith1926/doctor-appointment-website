@@ -1,0 +1,28 @@
+# Angular
+doctor-appointment-frontend/node_modules/
+doctor-appointment-frontend/dist/
+doctor-appointment-frontend/.angular/
+
+# Spring Boot
+DoctorWebsite/target/
+
+# Spring Boot configuration containing secrets
+DoctorWebsite/src/main/resources/application.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+application-local.properties
+application-secret.properties

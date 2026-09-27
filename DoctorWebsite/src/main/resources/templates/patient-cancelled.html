@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Appointment Cancelled</title>
+</head>
+
+<body style="
+    margin:0;
+    padding:0;
+    background:#f4f7fb;
+    font-family:Arial, Helvetica, sans-serif;
+">
+
+<table width="100%"
+       cellpadding="0"
+       cellspacing="0"
+       style="background:#f4f7fb; padding:30px 15px;">
+
+    <tr>
+        <td align="center">
+
+            <!-- MAIN CARD -->
+            <table width="600"
+                   cellpadding="0"
+                   cellspacing="0"
+                   style="
+                       max-width:600px;
+                       width:100%;
+                       background:#ffffff;
+                       border-radius:12px;
+                       overflow:hidden;
+                       box-shadow:0 4px 15px rgba(0,0,0,0.08);
+                   ">
+
+                <!-- HEADER -->
+                <tr>
+                    <td style="
+                        background:#1769aa;
+                        padding:28px 30px;
+                        text-align:center;
+                    ">
+
+                        <div style="
+                            font-size:28px;
+                            font-weight:bold;
+                            color:#ffffff;
+                        ">
+                            Shyam Ortho Care
+                        </div>
+
+                        <div style="
+                            margin-top:8px;
+                            font-size:14px;
+                            color:#e8f3ff;
+                        ">
+                            Orthopaedic Care &amp; Consultation
+                        </div>
+
+                    </td>
+                </tr>
+
+                <!-- CONTENT -->
+                <tr>
+                    <td style="padding:35px 30px;">
+
+                        <h2 style="
+                            margin:0 0 12px 0;
+                            color:#222222;
+                            font-size:24px;
+                        ">
+                            Appointment Cancelled
+                        </h2>
+
+                        <p style="
+                            margin:0 0 25px 0;
+                            color:#666666;
+                            font-size:15px;
+                            line-height:1.6;
+                        ">
+
+                            Hello
+                            <strong th:text="${doctorName}">
+                                Doctor
+                            </strong>,
+
+                            the following appointment has been
+                            cancelled by the patient.
+                        </p>
+
+                        <!-- STATUS -->
+                        <div style="
+                            margin-bottom:25px;
+                            text-align:center;
+                        ">
+
+                            <span style="
+                                display:inline-block;
+                                background:#ffebee;
+                                color:#c62828;
+                                padding:9px 20px;
+                                border-radius:20px;
+                                font-size:13px;
+                                font-weight:bold;
+                            "
+                            th:text="${status}">
+                                CANCELLED
+                            </span>
+
+                        </div>
+
+                        <!-- APPOINTMENT DETAILS -->
+                        <table width="100%"
+                               cellpadding="0"
+                               cellspacing="0"
+                               style="
+                                   border:1px solid #e5eaf0;
+                                   border-radius:8px;
+                                   overflow:hidden;
+                               ">
+
+                            <tr>
+                                <td style="
+                                    padding:14px 16px;
+                                    background:#f8fafc;
+                                    color:#666666;
+                                    font-size:14px;
+                                    width:40%;
+                                ">
+                                    Patient
+                                </td>
+
+                                <td style="
+                                    padding:14px 16px;
+                                    color:#222222;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                "
+                                th:text="${patientName}">
+                                    Patient Name
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="
+                                    padding:14px 16px;
+                                    background:#f8fafc;
+                                    color:#666666;
+                                    font-size:14px;
+                                ">
+                                    Appointment Date
+                                </td>
+
+                                <td style="
+                                    padding:14px 16px;
+                                    color:#222222;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                "
+                                th:text="${appointmentDate}">
+                                    Date
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="
+                                    padding:14px 16px;
+                                    background:#f8fafc;
+                                    color:#666666;
+                                    font-size:14px;
+                                ">
+                                    Appointment Time
+                                </td>
+
+                                <td style="
+                                    padding:14px 16px;
+                                    color:#222222;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                "
+                                th:text="${appointmentTime}">
+                                    Time
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="
+                                    padding:14px 16px;
+                                    background:#f8fafc;
+                                    color:#666666;
+                                    font-size:14px;
+                                ">
+                                    Status
+                                </td>
+
+                                <td style="
+                                    padding:14px 16px;
+                                    color:#c62828;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                "
+                                th:text="${status}">
+                                    CANCELLED
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <!-- MESSAGE -->
+                        <div style="
+                            margin-top:25px;
+                            padding:18px;
+                            background:#fff5f5;
+                            border-left:4px solid #c62828;
+                            border-radius:6px;
+                        ">
+
+                            <p style="
+                                margin:0;
+                                color:#555555;
+                                font-size:14px;
+                                line-height:1.6;
+                            ">
+
+                                The appointment slot has been
+                                released and is now available
+                                for another patient.
+
+                            </p>
+
+                        </div>
+
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td style="
+                        background:#f8fafc;
+                        padding:22px 30px;
+                        text-align:center;
+                        border-top:1px solid #e8edf2;
+                    ">
+
+                        <div style="
+                            color:#555555;
+                            font-size:13px;
+                        ">
+                            Regards,
+                        </div>
+
+                        <div style="
+                            margin-top:5px;
+                            color:#1769aa;
+                            font-size:15px;
+                            font-weight:bold;
+                        ">
+                            Shyam Ortho Care
+                        </div>
+
+                        <div style="
+                            margin-top:10px;
+                            color:#999999;
+                            font-size:11px;
+                        ">
+                            This is an automated email.
+                            Please do not reply directly to this message.
+                        </div>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+
+</table>
+
+</body>
+
+</html>

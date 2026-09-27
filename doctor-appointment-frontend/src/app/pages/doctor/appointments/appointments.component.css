@@ -1,0 +1,610 @@
+/* =========================================
+   SHYAM ORTHO CARE - DOCTOR APPOINTMENTS
+   ========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+  max-width: 1200px;
+}
+
+/* =========================================
+   PAGE HEADER
+   ========================================= */
+
+.container > div:first-child {
+  background: #ffffff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+  color: #17324d;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.text-muted {
+  color: #718096 !important;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.btn {
+  border-radius: 9px;
+  font-weight: 600;
+  padding: 9px 18px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-primary:hover {
+  background: #12568d;
+  border-color: #12568d;
+}
+
+.btn-success {
+  background: #198754;
+  border-color: #198754;
+}
+
+.btn-outline-primary {
+  color: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-outline-primary:hover {
+  background: #1769aa;
+  border-color: #1769aa;
+  color: #ffffff;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+/* =========================================
+   ALERTS
+   ========================================= */
+
+.alert {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.alert-info {
+  background: #eaf3ff;
+  color: #24527a;
+}
+
+.alert-success {
+  background: #e9f7ef;
+  color: #176b3a;
+}
+
+.alert-danger {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+
+/* =========================================
+   APPOINTMENT CARDS
+   ========================================= */
+
+.card {
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.card.shadow {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10) !important;
+}
+
+.card-body {
+  padding: 26px;
+}
+
+/* =========================================
+   PATIENT NAME
+   ========================================= */
+
+.card h4 {
+  color: #17324d;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* =========================================
+   STATUS BADGE
+   ========================================= */
+
+.badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.bg-success {
+  background-color: #198754 !important;
+}
+
+.bg-primary {
+  background-color: #1769aa !important;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+/* =========================================
+   APPOINTMENT DETAILS
+   ========================================= */
+
+.card-body p {
+  margin-bottom: 12px;
+  color: #526579;
+  line-height: 1.5;
+}
+
+.card-body p strong {
+  display: inline-block;
+  min-width: 145px;
+  color: #263b53;
+}
+
+.card hr {
+  border: 0;
+  border-top: 1px solid #e9eef5;
+  opacity: 1;
+  margin: 18px 0;
+}
+
+/* =========================================
+   ACTION BUTTON AREA
+   ========================================= */
+
+.card-body .d-flex.gap-2 {
+  padding-top: 5px;
+}
+
+.card-body .d-flex.gap-2 .btn {
+  flex: 1;
+}
+
+/* =========================================
+   COMPLETED / CANCELLED MESSAGE
+   ========================================= */
+
+.card-body .alert {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.spinner-border {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #1769aa;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .container > div:first-child {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-body {
+    padding: 22px;
+  }
+
+  .card-body p strong {
+    min-width: 120px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+  .container {
+    margin-top: 15px !important;
+  }
+
+  .container > div:first-child {
+    border-radius: 12px;
+    padding: 15px;
+  }
+
+  .container > div:first-child .btn {
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card h4 {
+    font-size: 1.1rem;
+  }
+
+  .card-body p {
+    font-size: 0.9rem;
+  }
+
+  .card-body p strong {
+    display: block;
+    min-width: auto;
+    margin-bottom: 2px;
+  }
+
+  .card-body .d-flex.gap-2 {
+    flex-direction: column;
+  }
+
+  .card-body .d-flex.gap-2 .btn {
+    width: 100%;
+  }
+}
+/* =========================================
+   DOCTOR PAGE HEADER
+   ========================================= */
+
+.doctor-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 26px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: #1769aa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   ALERTS
+   ========================================= */
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   LOADING / EMPTY
+   ========================================= */
+
+.loading-card,
+.empty-card {
+  padding: 55px 25px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.empty-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3ff;
+  border-radius: 18px;
+  font-size: 30px;
+}
+
+
+/* =========================================
+   APPOINTMENT CARD
+   ========================================= */
+
+.appointment-card {
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+}
+
+.appointment-card .card-body {
+  padding: 26px;
+}
+
+
+/* =========================================
+   APPOINTMENT HEADER
+   ========================================= */
+
+.appointment-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #8a99aa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.appointment-header h4 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   PATIENT
+   ========================================= */
+
+.patient-section {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.patient-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3ff;
+  border-radius: 13px;
+  font-size: 23px;
+}
+
+.detail-label {
+  display: block;
+  color: #8a99aa;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.patient-section h5 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   DETAILS GRID
+   ========================================= */
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  padding: 13px;
+  background: #f7fafc;
+  border-radius: 10px;
+}
+
+.detail-item span {
+  display: block;
+  margin-bottom: 5px;
+  color: #718096;
+  font-size: 0.76rem;
+}
+
+.detail-item strong {
+  display: block;
+  color: #263b53;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+
+/* =========================================
+   ACTIONS
+   ========================================= */
+
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+  padding-top: 5px;
+}
+
+.appointment-actions .btn {
+  flex: 1;
+}
+
+
+/* =========================================
+   STATUS
+   ========================================= */
+
+.status-message {
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.completed-message {
+  background: #eaf3ff;
+  color: #1769aa;
+}
+
+.cancelled-message {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+
+
+/* =========================================
+   SECURITY NOTE
+   ========================================= */
+
+.security-note {
+  margin: 5px 0 25px;
+  text-align: center;
+  color: #7a8da0;
+  font-size: 13px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .doctor-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .btn {
+    flex: 1;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .doctor-page-header {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .header-actions .btn {
+    width: 100%;
+  }
+
+  .appointment-card {
+    border-radius: 14px;
+  }
+
+  .appointment-card .card-body {
+    padding: 20px;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment-actions {
+    flex-direction: column;
+  }
+
+  .appointment-actions .btn {
+    width: 100%;
+  }
+
+}

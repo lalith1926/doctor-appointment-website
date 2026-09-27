@@ -1,0 +1,44 @@
+<nav class="clinic-navbar">
+
+  <div class="container">
+
+    <div class="clinic-navbar-inner">
+
+      <a
+        routerLink="/"
+        class="clinic-brand">
+
+        <span class="clinic-brand-icon">
+          🩺
+        </span>
+
+        <span class="clinic-brand-text">
+
+          <span class="clinic-brand-name">
+            Dr. Smith Clinic
+          </span>
+
+          <span class="clinic-brand-subtitle">
+            Personalised Medical Care
+          </span>
+
+        </span>
+
+      </a>
+
+
+      <button
+        *ngIf="authService.isLoggedIn()"
+        type="button"
+        class="btn btn-outline-primary btn-sm"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>

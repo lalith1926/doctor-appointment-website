@@ -1,0 +1,593 @@
+<div class="container py-4">
+
+  <!-- ========================================= -->
+  <!-- HEADER -->
+  <!-- ========================================= -->
+
+  <div class="clinic-page-header mb-4">
+
+    <div>
+
+      <div class="d-flex align-items-center gap-3">
+
+        <div class="clinic-action-icon mb-0">
+          📅
+        </div>
+
+        <div>
+
+          <h2 class="mb-0">
+            Manage Appointment Slots
+          </h2>
+
+          <p class="text-muted mb-0">
+            Shyam Ortho Care
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <p class="text-muted mt-3 mb-0">
+
+        Create and manage your available
+        consultation times.
+
+      </p>
+
+    </div>
+
+
+    <div class="d-flex gap-2">
+
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [disabled]="loading"
+        (click)="refreshSlots()">
+
+        ↻ Refresh
+
+      </button>
+
+
+      <a
+        routerLink="/doctor/dashboard"
+        class="btn btn-outline-primary">
+
+        Dashboard
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SUCCESS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="successMessage"
+    class="alert alert-success">
+
+    <strong>
+      ✓
+    </strong>
+
+    {{ successMessage }}
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- ERROR -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- CREATE SLOT -->
+  <!-- ========================================= -->
+
+  <div class="card mb-4">
+
+    <div class="card-body p-4">
+
+      <div class="mb-4">
+
+        <h4 class="mb-1">
+          Create Appointment Slot
+        </h4>
+
+        <p class="text-muted mb-0">
+
+          Add a time when patients can
+          book a consultation.
+
+        </p>
+
+      </div>
+
+
+      <div class="row">
+
+
+        <!-- DATE -->
+
+        <div class="col-md-4 mb-3">
+
+          <label
+            for="slotDate"
+            class="form-label fw-semibold">
+
+            📅 Date
+
+          </label>
+
+
+          <input
+            id="slotDate"
+            type="date"
+            class="form-control"
+            [(ngModel)]="selectedDate"
+          />
+
+        </div>
+
+
+        <!-- START -->
+
+        <div class="col-md-3 mb-3">
+
+          <label
+            for="startTime"
+            class="form-label fw-semibold">
+
+            🕐 Start Time
+
+          </label>
+
+
+          <input
+            id="startTime"
+            type="time"
+            class="form-control"
+            [(ngModel)]="startTime"
+          />
+
+        </div>
+
+
+        <!-- END -->
+
+        <div class="col-md-3 mb-3">
+
+          <label
+            for="endTime"
+            class="form-label fw-semibold">
+
+            🕐 End Time
+
+          </label>
+
+
+          <input
+            id="endTime"
+            type="time"
+            class="form-control"
+            [(ngModel)]="endTime"
+          />
+
+        </div>
+
+
+        <!-- CREATE -->
+
+        <div
+          class="
+            col-md-2
+            mb-3
+            d-flex
+            align-items-end
+          ">
+
+          <button
+            type="button"
+            class="btn btn-primary w-100"
+            [disabled]="creatingSlot"
+            (click)="createSlot()">
+
+            <span
+              *ngIf="creatingSlot"
+              class="
+                spinner-border
+                spinner-border-sm
+                me-1
+              ">
+            </span>
+
+
+            {{
+              creatingSlot
+                ? 'Creating...'
+                : 'Create Slot'
+            }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- DATE / SLOT COUNT -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="!loading"
+    class="mb-4">
+
+    <div
+      class="
+        d-flex
+        justify-content-between
+        align-items-center
+      ">
+
+      <div>
+
+        <h4 class="mb-1">
+          Your Schedule
+        </h4>
+
+        <p class="text-muted mb-0">
+
+          Slots for
+
+          <strong>
+            {{ selectedDate }}
+          </strong>
+
+        </p>
+
+      </div>
+
+
+      <span class="badge bg-primary">
+
+        {{ slots.length }}
+
+        {{
+          slots.length === 1
+            ? 'Slot'
+            : 'Slots'
+        }}
+
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- LOADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="card">
+
+    <div
+      class="
+        card-body
+        text-center
+        py-5
+      ">
+
+      <div
+        class="spinner-border mb-3">
+      </div>
+
+
+      <h5>
+        Loading your schedule
+      </h5>
+
+
+      <p class="text-muted mb-0">
+
+        Please wait...
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- NO SLOTS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      slots.length === 0 &&
+      !errorMessage
+    "
+    class="card">
+
+    <div
+      class="
+        card-body
+        text-center
+        py-5
+      ">
+
+      <div
+        class="
+          clinic-action-icon
+          mx-auto
+          mb-3
+        ">
+
+        📅
+
+      </div>
+
+
+      <h4>
+        No slots yet
+      </h4>
+
+
+      <p class="text-muted mb-0">
+
+        Create an appointment slot
+        using the form above.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SLOT LIST -->
+  <!-- ========================================= -->
+
+  <div
+    class="row"
+    *ngIf="
+      !loading &&
+      slots.length > 0
+    ">
+
+
+    <div
+      class="col-md-6 col-lg-4 mb-4"
+      *ngFor="let slot of slots">
+
+
+      <div
+        class="
+          card
+          h-100
+          clinic-slot-card
+        ">
+
+        <div class="card-body p-4">
+
+
+          <!-- TIME -->
+
+          <div
+            class="
+              d-flex
+              justify-content-between
+              align-items-start
+              mb-3
+            ">
+
+            <div>
+
+              <div
+                class="
+                  clinic-appointment-time
+                ">
+
+                {{ slot.startTime }}
+
+              </div>
+
+
+              <div
+                class="text-muted small">
+
+                to {{ slot.endTime }}
+
+              </div>
+
+            </div>
+
+
+            <span
+              *ngIf="!slot.booked"
+              class="badge bg-success">
+
+              Available
+
+            </span>
+
+
+            <span
+              *ngIf="slot.booked"
+              class="badge bg-danger">
+
+              Booked
+
+            </span>
+
+          </div>
+
+
+          <hr>
+
+
+          <!-- DATE -->
+
+          <div class="mb-3">
+
+            <div
+              class="text-muted small">
+
+              Date
+
+            </div>
+
+
+            <div
+              class="fw-semibold mt-1">
+
+              📅 {{ slot.date }}
+
+            </div>
+
+          </div>
+
+
+          <!-- DOCTOR -->
+
+          <div class="mb-3">
+
+            <div
+              class="text-muted small">
+
+              Doctor
+
+            </div>
+
+
+            <div
+              class="fw-semibold mt-1">
+
+              🩺 {{ slot.doctor.d_name }}
+
+            </div>
+
+          </div>
+
+
+          <!-- SPECIALIZATION -->
+
+          <div
+            *ngIf="
+              slot.doctor.d_specialization
+            "
+            class="mb-3">
+
+            <div
+              class="text-muted small">
+
+              Specialization
+
+            </div>
+
+
+            <div class="mt-1">
+
+              {{ slot.doctor.d_specialization }}
+
+            </div>
+
+          </div>
+
+
+          <!-- AVAILABLE -->
+
+          <div
+            *ngIf="!slot.booked"
+            class="
+              alert
+              alert-success
+              py-2
+              mb-0
+            ">
+
+            <small>
+
+              ✓ Patients can book
+              this appointment time.
+
+            </small>
+
+          </div>
+
+
+          <!-- BOOKED -->
+
+          <div
+            *ngIf="slot.booked"
+            class="
+              alert
+              alert-danger
+              py-2
+              mb-0
+            ">
+
+            <small>
+
+              This slot has already
+              been booked.
+
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================= -->
+
+  <div
+    class="
+      text-center
+      mt-3
+      mb-4
+    ">
+
+    <p class="text-muted small">
+
+      🦴 Shyam Ortho Care ·
+      Orthopaedic Care & Wellness
+
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,444 @@
+<div class="container py-4">
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <div class="clinic-page-header mb-4">
+
+    <div class="clinic-brand">
+
+      <span class="clinic-brand-icon">
+        🦴
+      </span>
+
+      <span class="clinic-brand-text">
+
+        <span class="clinic-brand-name">
+          Shyam Ortho Care
+        </span>
+
+        <span class="clinic-brand-subtitle">
+          Orthopaedic Care & Wellness
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="clinic-header-actions">
+
+      <a
+        routerLink="/patient/dashboard"
+        class="btn btn-light clinic-nav-btn">
+
+        Dashboard
+
+      </a>
+
+
+      <a
+        routerLink="/patient/slots"
+        class="btn btn-light clinic-nav-btn">
+
+        Book Appointment
+
+      </a>
+
+
+      <a
+        routerLink="/patient/appointments"
+        class="btn btn-light clinic-nav-btn">
+
+        My Appointments
+
+      </a>
+
+
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       ERROR
+       ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- =========================================
+       SUCCESS
+       ========================================= -->
+
+  <div
+    *ngIf="successMessage"
+    class="alert alert-success">
+
+    {{ successMessage }}
+
+  </div>
+
+
+  <!-- =========================================
+       LOADING
+       ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="text-center py-5">
+
+    <div class="spinner-border"></div>
+
+    <p class="text-muted mt-3">
+      Loading your profile...
+    </p>
+
+  </div>
+
+
+  <!-- =========================================
+       PROFILE
+       ========================================= -->
+
+  <div *ngIf="!loading">
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="mb-4">
+
+      <span class="badge bg-primary mb-2">
+        PATIENT PROFILE
+      </span>
+
+      <h1>
+        Edit Your Profile
+      </h1>
+
+      <p class="text-muted">
+        Keep your personal information up to date.
+      </p>
+
+    </div>
+
+
+    <!-- =====================================
+         PROFILE FORM
+         ===================================== -->
+
+    <div class="card">
+
+      <div class="card-body p-4">
+
+
+        <!-- BASIC INFORMATION -->
+
+        <h4 class="mb-3">
+          Personal Information
+        </h4>
+
+
+        <div class="row">
+
+
+          <!-- NAME -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="name"
+              class="form-label">
+
+              Full Name
+
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              class="form-control"
+              [(ngModel)]="profile.name"
+              placeholder="Enter your name">
+
+          </div>
+
+
+          <!-- EMAIL -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="email"
+              class="form-label">
+
+              Email
+
+            </label>
+
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              [(ngModel)]="profile.email"
+              placeholder="Enter your email">
+
+          </div>
+
+
+          <!-- PHONE -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="phone"
+              class="form-label">
+
+              Phone
+
+            </label>
+
+            <input
+              id="phone"
+              type="tel"
+              class="form-control"
+              [(ngModel)]="profile.phone"
+              placeholder="Enter your phone number">
+
+          </div>
+
+
+          <!-- AGE -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="age"
+              class="form-label">
+
+              Age
+
+            </label>
+
+            <input
+              id="age"
+              type="number"
+              min="0"
+              class="form-control"
+              [(ngModel)]="profile.age"
+              placeholder="Enter your age">
+
+          </div>
+
+
+          <!-- GENDER -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="gender"
+              class="form-label">
+
+              Gender
+
+            </label>
+
+            <select
+              id="gender"
+              class="form-select"
+              [(ngModel)]="profile.gender">
+
+              <option value="">
+                Select Gender
+              </option>
+
+              <option value="Male">
+                Male
+              </option>
+
+              <option value="Female">
+                Female
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- BLOOD GROUP -->
+
+          <div class="col-md-6 mb-3">
+
+            <label
+              for="bloodGroup"
+              class="form-label">
+
+              Blood Group
+
+            </label>
+
+            <select
+              id="bloodGroup"
+              class="form-select"
+              [(ngModel)]="profile.bloodGroup">
+
+              <option value="">
+                Select Blood Group
+              </option>
+
+              <option value="A+">
+                A+
+              </option>
+
+              <option value="A-">
+                A-
+              </option>
+
+              <option value="B+">
+                B+
+              </option>
+
+              <option value="B-">
+                B-
+              </option>
+
+              <option value="AB+">
+                AB+
+              </option>
+
+              <option value="AB-">
+                AB-
+              </option>
+
+              <option value="O+">
+                O+
+              </option>
+
+              <option value="O-">
+                O-
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- ADDRESS -->
+
+          <div class="col-12 mb-4">
+
+            <label
+              for="address"
+              class="form-label">
+
+              Address
+
+            </label>
+
+            <textarea
+              id="address"
+              class="form-control"
+              rows="4"
+              [(ngModel)]="profile.address"
+              placeholder="Enter your address">
+            </textarea>
+
+          </div>
+
+        </div>
+
+
+        <hr class="my-4">
+
+
+        <!-- ACTIONS -->
+
+        <div
+          class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+
+          <a
+            routerLink="/patient/dashboard"
+            class="btn btn-outline-secondary">
+
+            ← Back to Dashboard
+
+          </a>
+
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            [disabled]="saving"
+            (click)="saveProfile()">
+
+            <span
+              *ngIf="!saving">
+
+              Save Changes
+
+            </span>
+
+            <span
+              *ngIf="saving">
+
+              Saving...
+
+            </span>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================
+         INFORMATION
+         ===================================== -->
+
+    <div class="card mt-4">
+
+      <div class="card-body">
+
+        <h5>
+          🔐 Profile Security
+        </h5>
+
+        <p class="text-muted mb-0">
+
+          Your profile information is private and
+          can only be updated while you are logged
+          into your patient account.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

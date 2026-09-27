@@ -1,0 +1,1160 @@
+/* =========================================================
+   SHYAM ORTHO CARE
+   DOCTOR - MANAGE APPOINTMENT SLOTS
+   ========================================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f9fb;
+  color: #12344d;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+  max-width: 1180px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.clinic-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  padding: 28px 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce9ee;
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(20, 60, 80, 0.07);
+}
+
+
+.clinic-page-header h2 {
+  color: #073b4c;
+
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+
+.clinic-page-header p {
+  color: #668096 !important;
+}
+
+
+.clinic-page-header > div:first-child > p {
+  max-width: 620px;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   HEADER ICON
+   ========================================================= */
+
+.clinic-action-icon {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: #e9f7f8;
+
+  border: 1px solid #d2ecee;
+  border-radius: 14px;
+
+  font-size: 26px;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+  min-height: 44px;
+
+  padding: 9px 17px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.btn-primary {
+  background: #177e89;
+  border-color: #177e89;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 7px 18px rgba(23, 126, 137, 0.18);
+}
+
+
+.btn-primary:hover:not(:disabled) {
+  background: #126b75;
+  border-color: #126b75;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 24px rgba(23, 126, 137, 0.25);
+}
+
+
+.btn-outline-primary {
+  background: #ffffff;
+
+  color: #177e89;
+
+  border-color: #177e89;
+}
+
+
+.btn-outline-primary:hover:not(:disabled) {
+  background: #eef9fa;
+
+  color: #126b75;
+  border-color: #126b75;
+
+  transform: translateY(-1px);
+}
+
+
+.btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+  border-radius: 12px;
+
+  padding: 14px 18px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+.alert-success {
+  background: #e7f8f0;
+  color: #14734d;
+
+  border: 1px solid #bcebd5;
+}
+
+
+.alert-danger {
+  background: #fff0f0;
+  color: #c53030;
+
+  border: 1px solid #ffd1d1;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  background: #ffffff;
+
+  border: 1px solid #dce9ee;
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(20, 60, 80, 0.06);
+}
+
+
+.card-body {
+  color: #12344d;
+}
+
+
+/* =========================================================
+   CREATE SLOT SECTION
+   ========================================================= */
+
+.card h4 {
+  color: #073b4c;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+
+.card h5 {
+  color: #073b4c;
+
+  font-size: 19px;
+  font-weight: 750;
+}
+
+
+.card-body > div:first-child p {
+  color: #718697 !important;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-label {
+  color: #294b60;
+
+  font-size: 14px;
+  font-weight: 700 !important;
+}
+
+
+.form-control {
+  min-height: 46px;
+
+  padding: 10px 13px;
+
+  background: #ffffff;
+
+  border: 1px solid #d3e0e7;
+  border-radius: 10px;
+
+  color: #173f55;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.form-control:hover {
+  border-color: #b8ccd7;
+}
+
+
+.form-control:focus {
+  border-color: #177e89;
+
+  box-shadow:
+    0 0 0 3px rgba(23, 126, 137, 0.12);
+
+  outline: none;
+}
+
+
+/* =========================================================
+   SCHEDULE HEADER
+   ========================================================= */
+
+.mb-4 > .d-flex h4 {
+  margin: 0;
+
+  color: #073b4c;
+}
+
+
+.mb-4 > .d-flex p {
+  color: #718697 !important;
+
+  font-size: 14px;
+}
+
+
+.badge.bg-primary {
+  background: #e5f2f5 !important;
+
+  color: #176875 !important;
+
+  border: 1px solid #cce5e9;
+
+  border-radius: 999px;
+
+  padding: 8px 13px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.spinner-border {
+  color: #177e89;
+}
+
+
+.card-body.text-center.py-5 .spinner-border {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+
+.card-body.text-center.py-5 p {
+  color: #718697 !important;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.card-body.text-center.py-5 .clinic-action-icon {
+  width: 66px;
+  height: 66px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 17px;
+
+  font-size: 29px;
+}
+
+
+.card-body.text-center.py-5 h4 {
+  margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   SLOT CARDS
+   ========================================================= */
+
+.clinic-slot-card {
+  height: 100%;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+.clinic-slot-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #c8dfe4;
+
+  box-shadow:
+    0 18px 40px rgba(20, 60, 80, 0.11);
+}
+
+
+.clinic-slot-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+.clinic-appointment-time {
+  color: #177e89;
+
+  font-size: 28px;
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+}
+
+
+.clinic-slot-card .text-muted.small {
+  color: #7890a0 !important;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   SLOT STATUS
+   ========================================================= */
+
+.badge.bg-success {
+  background: #e1f7eb !important;
+
+  color: #137547 !important;
+
+  border: 1px solid #bfe8d0;
+
+  border-radius: 999px;
+
+  padding: 7px 11px;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+.badge.bg-danger {
+  background: #ffe6e6 !important;
+
+  color: #c53030 !important;
+
+  border: 1px solid #ffd0d0;
+
+  border-radius: 999px;
+
+  padding: 7px 11px;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.clinic-slot-card hr {
+  margin: 0 0 18px;
+
+  border: 0;
+  border-top: 1px solid #e7eef2;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   SLOT DETAILS
+   ========================================================= */
+
+.clinic-slot-card .fw-semibold {
+  color: #173f55;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+.clinic-slot-card .text-muted.small {
+  margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   SLOT INFORMATION ALERTS
+   ========================================================= */
+
+.clinic-slot-card .alert {
+  margin-top: auto;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+.clinic-slot-card .alert-success {
+  background: #eaf9f1;
+
+  color: #197047;
+
+  border: 1px solid #c5ead6;
+}
+
+
+.clinic-slot-card .alert-danger {
+  background: #fff0f0;
+
+  color: #b83232;
+
+  border: 1px solid #ffd3d3;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.text-center.mt-3.mb-4 {
+  padding-top: 8px;
+}
+
+
+.text-center.mt-3.mb-4 p {
+  color: #7a8d9c !important;
+
+  font-size: 12px;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .clinic-page-header {
+    align-items: flex-start;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+
+  .clinic-page-header {
+    flex-direction: column;
+
+    padding: 22px;
+
+    gap: 20px;
+  }
+
+
+  .clinic-page-header > .d-flex {
+    width: 100%;
+  }
+
+
+  .clinic-page-header > .d-flex .btn {
+    flex: 1;
+  }
+
+
+  .clinic-page-header h2 {
+    font-size: 23px;
+  }
+
+
+  .clinic-action-icon {
+    width: 47px;
+    height: 47px;
+
+    font-size: 23px;
+  }
+
+
+  .card-body.p-4 {
+    padding: 20px !important;
+  }
+
+
+  .clinic-appointment-time {
+    font-size: 25px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+
+  .clinic-page-header {
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+
+  .clinic-page-header h2 {
+    font-size: 21px;
+  }
+
+
+  .clinic-page-header > .d-flex {
+    flex-direction: column;
+  }
+
+
+  .clinic-page-header > .d-flex .btn {
+    width: 100%;
+  }
+
+
+  .clinic-page-header .d-flex.align-items-center {
+    flex-direction: row;
+  }
+
+
+  .card {
+    border-radius: 14px;
+  }
+
+
+  .clinic-slot-card .card-body {
+    padding: 20px !important;
+  }
+
+
+  .clinic-appointment-time {
+    font-size: 23px;
+  }
+
+
+  .badge.bg-success,
+  .badge.bg-danger {
+    padding: 6px 9px;
+
+    font-size: 10px;
+  }
+
+
+  .form-control {
+    min-height: 44px;
+  }
+
+
+  .btn {
+    min-height: 44px;
+  }
+
+}
+/* =========================================================
+   SHYAM ORTHO CARE - DOCTOR MANAGE SLOTS
+   FINAL UI POLISH
+   Add this at the bottom of your existing CSS
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.container {
+  max-width: 1200px;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.clinic-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  padding: 24px 26px;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.clinic-page-header h2 {
+  color: #17324d;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.clinic-page-header p {
+  color: #718096 !important;
+}
+
+
+/* =========================================================
+   ACTION ICON
+   ========================================================= */
+
+.clinic-action-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eaf3ff;
+  color: #1769aa;
+
+  border-radius: 14px;
+
+  font-size: 24px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+  border-radius: 9px;
+  font-weight: 600;
+
+  padding: 9px 17px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-primary:hover {
+  background: #12568d;
+  border-color: #12568d;
+
+  box-shadow:
+    0 5px 12px rgba(23, 105, 170, 0.20);
+}
+
+.btn-outline-primary {
+  color: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-outline-primary:hover {
+  background: #1769aa;
+  border-color: #1769aa;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+  border: none;
+  border-radius: 12px;
+
+  padding: 13px 17px;
+
+  font-size: 0.92rem;
+}
+
+.alert-success {
+  background: #e9f7ef;
+  color: #176b3a;
+}
+
+.alert-danger {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+
+
+/* =========================================================
+   CREATE SLOT CARD
+   ========================================================= */
+
+.container > .card {
+  border: none;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.055);
+}
+
+.container > .card .card-body {
+  padding: 27px !important;
+}
+
+.container > .card h4 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-label {
+  color: #263b53;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  min-height: 44px;
+
+  border: 1px solid #dce5ee;
+  border-radius: 9px;
+
+  color: #263b53;
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #1769aa;
+
+  box-shadow:
+    0 0 0 3px rgba(23, 105, 170, 0.10);
+}
+
+
+/* =========================================================
+   SCHEDULE HEADER
+   ========================================================= */
+
+.container h4 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+.badge {
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.bg-primary {
+  background-color: #1769aa !important;
+}
+
+.bg-success {
+  background-color: #198754 !important;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+
+/* =========================================================
+   SLOT CARDS
+   ========================================================= */
+
+.clinic-slot-card {
+  border: none !important;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.055);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.clinic-slot-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.10);
+}
+
+.clinic-slot-card .card-body {
+  padding: 24px !important;
+}
+
+
+/* =========================================================
+   SLOT TIME
+   ========================================================= */
+
+.clinic-appointment-time {
+  color: #1769aa;
+
+  font-size: 1.65rem;
+  font-weight: 800;
+
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.clinic-slot-card .small {
+  color: #7b8b9b !important;
+}
+
+
+/* =========================================================
+   SLOT DIVIDER
+   ========================================================= */
+
+.clinic-slot-card hr {
+  border: 0;
+
+  border-top: 1px solid #e9eef5;
+
+  opacity: 1;
+
+  margin: 18px 0;
+}
+
+
+/* =========================================================
+   SLOT INFORMATION
+   ========================================================= */
+
+.clinic-slot-card .text-muted.small {
+  margin-bottom: 4px;
+
+  color: #8a99aa !important;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+.clinic-slot-card .fw-semibold {
+  color: #263b53;
+}
+
+
+/* =========================================================
+   SLOT STATUS ALERT
+   ========================================================= */
+
+.clinic-slot-card .alert {
+  margin-top: 14px;
+
+  border-radius: 10px;
+
+  font-size: 0.85rem;
+}
+
+.clinic-slot-card .alert-success {
+  background: #e9f7ef;
+  color: #176b3a;
+}
+
+.clinic-slot-card .alert-danger {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+
+
+/* =========================================================
+   NO SLOTS CARD
+   ========================================================= */
+
+.container > .card:not(.clinic-slot-card) {
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.055);
+}
+
+.container > .card .clinic-action-icon.mx-auto {
+  width: 64px;
+  height: 64px;
+
+  font-size: 28px;
+}
+
+.container > .card h4 {
+  color: #17324d;
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.spinner-border {
+  color: #1769aa;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.container > .text-center p {
+  color: #7a8da0 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .clinic-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 20px;
+  }
+
+  .clinic-page-header > .d-flex {
+    width: 100%;
+  }
+
+  .clinic-page-header > .d-flex .btn {
+    flex: 1;
+  }
+
+  .container > .card .card-body {
+    padding: 22px !important;
+  }
+
+  .clinic-slot-card .card-body {
+    padding: 22px !important;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .clinic-page-header {
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .clinic-page-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .clinic-page-header > .d-flex {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .clinic-page-header > .d-flex .btn {
+    width: 100%;
+  }
+
+  .clinic-action-icon {
+    width: 46px;
+    height: 46px;
+    font-size: 21px;
+  }
+
+  .clinic-page-header > div:first-child
+  .d-flex {
+    align-items: center;
+  }
+
+  .container > .card {
+    border-radius: 14px;
+  }
+
+  .clinic-slot-card {
+    border-radius: 14px;
+  }
+
+  .clinic-appointment-time {
+    font-size: 1.45rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+  }
+
+}

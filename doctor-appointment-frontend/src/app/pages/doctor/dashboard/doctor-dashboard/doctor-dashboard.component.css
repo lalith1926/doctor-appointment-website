@@ -1,0 +1,750 @@
+/* =========================================
+   SHYAM ORTHO CARE - DOCTOR DASHBOARD
+   ========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f8fc;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+  max-width: 1200px;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.clinic-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.clinic-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clinic-brand-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3ff;
+  border-radius: 12px;
+  font-size: 26px;
+}
+
+.clinic-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.clinic-brand-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #12345b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clinic-brand-subtitle {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-top: 2px;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.btn {
+  border-radius: 9px;
+  font-weight: 600;
+  padding: 9px 18px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-primary:hover {
+  background: #12568d;
+  border-color: #12568d;
+}
+
+.btn-outline-primary {
+  color: #1769aa;
+  border-color: #1769aa;
+}
+
+.btn-outline-primary:hover {
+  background: #1769aa;
+  border-color: #1769aa;
+  color: #ffffff;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+}
+
+/* =========================================
+   ERROR
+   ========================================= */
+
+.alert {
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.alert-danger {
+  background: #fdecec;
+  color: #9b2c2c;
+}
+
+/* =========================================
+   WELCOME SECTION
+   ========================================= */
+
+.clinic-doctor-welcome {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 38px;
+  background: linear-gradient(135deg, #1769aa, #2486c7);
+  border-radius: 18px;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(23, 105, 170, 0.18);
+}
+
+.clinic-doctor-welcome::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  right: -80px;
+  top: -110px;
+  border: 38px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.clinic-doctor-welcome .row {
+  position: relative;
+  z-index: 1;
+}
+
+.clinic-doctor-welcome h1 {
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.clinic-doctor-welcome p {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.6;
+}
+
+.clinic-dashboard-label {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
+
+h3,
+h4,
+h5 {
+  color: #17324d;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* =========================================
+   ACTION CARDS
+   ========================================= */
+
+.clinic-action-card {
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.clinic-action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+}
+
+.clinic-action-card .card-body {
+  padding: 28px !important;
+}
+
+.clinic-action-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf3ff;
+  border-radius: 14px;
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.clinic-action-card h4 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.clinic-action-card p {
+  color: #718096;
+  line-height: 1.6;
+  min-height: 52px;
+}
+
+/* =========================================
+   GENERAL CARDS
+   ========================================= */
+
+.card {
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 28px !important;
+}
+
+.card hr {
+  border: 0;
+  border-top: 1px solid #e9eef5;
+  opacity: 1;
+}
+
+/* =========================================
+   RESPONSIBILITIES
+   ========================================= */
+
+.card strong {
+  color: #263b53;
+}
+
+.card .small {
+  line-height: 1.5;
+}
+
+/* =========================================
+   ACCOUNT INFORMATION
+   ========================================= */
+
+.clinic-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8a99aa;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.fw-semibold {
+  color: #263b53;
+  word-break: break-word;
+}
+
+/* =========================================
+   DOCTOR BADGE
+   ========================================= */
+
+.badge.bg-primary {
+  background-color: #1769aa !important;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   LOADING
+   ========================================= */
+
+.spinner-border {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #1769aa;
+}
+
+/* =========================================
+   FOOTER MESSAGE
+   ========================================= */
+
+.container > .card:last-child {
+  background: #ffffff;
+}
+
+.container > .card:last-child h5 {
+  color: #1769aa;
+  font-weight: 700;
+}
+
+.container > .card:last-child p {
+  color: #718096;
+}
+
+/* =========================================
+   RESPONSIVE - TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .clinic-page-header {
+    padding: 16px;
+  }
+
+  .clinic-brand-name {
+    font-size: 1.15rem;
+  }
+
+  .clinic-brand-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .clinic-brand-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .clinic-doctor-welcome {
+    padding: 28px 24px;
+  }
+
+  .clinic-doctor-welcome h1 {
+    font-size: 1.8rem;
+  }
+
+  .clinic-doctor-welcome .col-md-4 {
+    display: none;
+  }
+
+  .card-body {
+    padding: 24px !important;
+  }
+}
+
+/* =========================================
+   RESPONSIVE - MOBILE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+  .container {
+    padding-top: 12px !important;
+  }
+
+  .clinic-page-header {
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .clinic-page-header .btn {
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
+
+  .clinic-brand {
+    gap: 8px;
+  }
+
+  .clinic-brand-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .clinic-brand-name {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .clinic-brand-subtitle {
+    font-size: 0.68rem;
+  }
+
+  .clinic-doctor-welcome {
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .clinic-doctor-welcome h1 {
+    font-size: 1.55rem;
+  }
+
+  .clinic-doctor-welcome p {
+    font-size: 0.92rem;
+  }
+
+  .clinic-action-card {
+    border-radius: 14px;
+  }
+
+  .clinic-action-card .card-body {
+    padding: 22px !important;
+  }
+
+  .clinic-action-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .clinic-action-card h4 {
+    font-size: 1.15rem;
+  }
+
+  .clinic-action-card p {
+    min-height: auto;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+
+  .card-body {
+    padding: 22px !important;
+  }
+}
+/* =========================================
+   HEADER NAVIGATION
+   ========================================= */
+
+.clinic-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clinic-nav-btn {
+  color: #17324d;
+  border: 1px solid #e1e9f1;
+  background: #f8fbfe;
+  font-weight: 600;
+}
+
+.clinic-nav-btn:hover {
+  color: #1769aa;
+  background: #eaf3ff;
+  border-color: #cfe1f0;
+}
+
+
+/* =========================================
+   DOCTOR ICON
+   ========================================= */
+
+.clinic-doctor-icon {
+  font-size: 5rem;
+  line-height: 1;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.clinic-footer-card {
+  border: 1px solid #e5edf5;
+}
+
+.clinic-footer-icon {
+  font-size: 2rem;
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 992px) {
+
+  .clinic-header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .clinic-nav-btn {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .clinic-page-header {
+    gap: 12px;
+  }
+
+  .clinic-header-actions {
+    flex-shrink: 0;
+  }
+
+  .clinic-header-actions .btn {
+    padding: 7px 11px;
+    font-size: 0.82rem;
+  }
+
+  .clinic-doctor-icon {
+    display: none;
+  }
+
+}
+/* =========================================================
+   TODAY'S APPOINTMENT OVERVIEW
+   ========================================================= */
+
+.today-stats-loading {
+  display: flex;
+  align-items: center;
+
+  padding: 22px;
+
+  background: #ffffff;
+  border-radius: 14px;
+
+  color: #718096;
+  font-size: 0.9rem;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.045);
+}
+
+
+/* =========================================================
+   STAT CARD
+   ========================================================= */
+
+.clinic-stat-card {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 18px;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  border: 1px solid #e7eef5;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.045);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.clinic-stat-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 9px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   STAT ICON
+   ========================================================= */
+
+.clinic-stat-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   STAT CONTENT
+   ========================================================= */
+
+.clinic-stat-content {
+  min-width: 0;
+}
+
+.clinic-stat-content span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #718096;
+
+  font-size: 0.73rem;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.clinic-stat-content strong {
+  display: block;
+
+  color: #17324d;
+
+  font-size: 1.65rem;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+}
+
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
+
+.total-stat .clinic-stat-icon {
+  background: #eaf3ff;
+}
+
+
+/* =========================================================
+   PENDING
+   ========================================================= */
+
+.pending-stat .clinic-stat-icon {
+  background: #fff6d9;
+}
+
+
+/* =========================================================
+   CONFIRMED
+   ========================================================= */
+
+.confirmed-stat .clinic-stat-icon {
+  background: #e9f7ef;
+
+  color: #198754;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   COMPLETED
+   ========================================================= */
+
+.completed-stat .clinic-stat-icon {
+  background: #eaf3ff;
+
+  color: #1769aa;
+}
+
+
+/* =========================================================
+   CANCELLED
+   ========================================================= */
+
+.cancelled-stat .clinic-stat-icon {
+  background: #fdecec;
+
+  color: #dc3545;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   STAT CARD RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  .clinic-stat-card {
+    padding: 16px;
+  }
+
+  .clinic-stat-content strong {
+    font-size: 1.5rem;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .clinic-stat-card {
+    padding: 17px;
+  }
+
+  .clinic-stat-icon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 19px;
+  }
+
+  .clinic-stat-content span {
+    font-size: 0.7rem;
+  }
+
+  .clinic-stat-content strong {
+    font-size: 1.45rem;
+  }
+
+}

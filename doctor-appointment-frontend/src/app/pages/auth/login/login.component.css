@@ -1,0 +1,356 @@
+/* =========================================
+   SHYAM ORTHO CARE - LOGIN PAGE
+   ========================================= */
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.clinic-auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background:
+    radial-gradient(circle at top left, #eaf5ff 0%, transparent 35%),
+    radial-gradient(circle at bottom right, #e8f7f3 0%, transparent 35%),
+    #f5f8fc;
+}
+
+/* =========================================
+   MAIN CARD
+   ========================================= */
+
+.clinic-auth-card {
+  width: 100%;
+  max-width: 1050px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(25, 55, 85, 0.12);
+}
+
+/* =========================================
+   BRAND / LEFT SIDE
+   ========================================= */
+
+.clinic-auth-brand {
+  padding: 55px 48px;
+  background: linear-gradient(145deg, #1769aa, #2486c7);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.clinic-auth-brand::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -150px;
+  top: -130px;
+  border: 45px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.clinic-auth-brand::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  left: -140px;
+  bottom: -120px;
+  border: 35px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+}
+
+.clinic-auth-brand > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   BRAND ICON
+   ========================================= */
+
+.clinic-brand-icon {
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-size: 38px;
+}
+
+/* =========================================
+   BRAND TEXT
+   ========================================= */
+
+.clinic-auth-brand h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 2.3rem;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.clinic-auth-brand > p {
+  max-width: 390px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* =========================================
+   FEATURES
+   ========================================= */
+
+.clinic-auth-brand .d-flex {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.95rem;
+}
+
+.clinic-auth-brand .d-flex span:first-child {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+/* =========================================
+   LOGIN FORM SIDE
+   ========================================= */
+
+.clinic-auth-form {
+  padding: 55px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =========================================
+   FORM HEADING
+   ========================================= */
+
+.clinic-auth-form h2 {
+  color: #17324d;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.clinic-auth-form .text-muted {
+  color: #718096 !important;
+}
+
+/* =========================================
+   LABELS
+   ========================================= */
+
+.form-label {
+  color: #263b53;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+/* =========================================
+   INPUTS
+   ========================================= */
+
+.form-control {
+  min-height: 48px;
+  border: 1px solid #d8e1eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #263b53;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-control::placeholder {
+  color: #a1adba;
+}
+
+.form-control:focus {
+  border-color: #1769aa;
+  box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.12);
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.10);
+}
+
+/* =========================================
+   VALIDATION
+   ========================================= */
+
+.text-danger {
+  font-size: 0.8rem;
+}
+
+/* =========================================
+   ERROR ALERT
+   ========================================= */
+
+.alert-danger {
+  border: none;
+  border-radius: 10px;
+  background: #fdecec;
+  color: #9b2c2c;
+  font-size: 0.88rem;
+  padding: 12px 15px;
+}
+
+/* =========================================
+   LOGIN BUTTON
+   ========================================= */
+
+.clinic-auth-form .btn-primary {
+  min-height: 48px;
+  border: none;
+  border-radius: 10px;
+  background: #1769aa;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 5px 14px rgba(23, 105, 170, 0.18);
+  transition: all 0.2s ease;
+}
+
+.clinic-auth-form .btn-primary:hover:not(:disabled) {
+  background: #12568d;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 18px rgba(23, 105, 170, 0.24);
+}
+
+.clinic-auth-form .btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   REGISTER LINK
+   ========================================= */
+
+.clinic-auth-form a {
+  color: #1769aa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.clinic-auth-form a:hover {
+  color: #12568d;
+  text-decoration: underline;
+}
+
+/* =========================================
+   SPINNER
+   ========================================= */
+
+.spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 850px) {
+
+  .clinic-auth-card {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
+  .clinic-auth-brand {
+    padding: 38px 40px;
+  }
+
+  .clinic-auth-brand > p {
+    max-width: 100%;
+  }
+
+  .clinic-auth-brand .mt-4 {
+    margin-top: 25px !important;
+  }
+
+  .clinic-auth-form {
+    padding: 40px;
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 576px) {
+
+  .clinic-auth-page {
+    padding: 20px 12px;
+    align-items: flex-start;
+  }
+
+  .clinic-auth-card {
+    border-radius: 16px;
+    margin-top: 10px;
+  }
+
+  .clinic-auth-brand {
+    padding: 32px 24px;
+  }
+
+  .clinic-brand-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    font-size: 30px;
+    margin-bottom: 18px !important;
+  }
+
+  .clinic-auth-brand h1 {
+    font-size: 1.7rem;
+  }
+
+  .clinic-auth-brand > p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .clinic-auth-brand .d-flex {
+    font-size: 0.85rem;
+  }
+
+  .clinic-auth-form {
+    padding: 32px 24px;
+  }
+
+  .clinic-auth-form h2 {
+    font-size: 1.55rem;
+  }
+
+  .form-control {
+    min-height: 46px;
+  }
+}

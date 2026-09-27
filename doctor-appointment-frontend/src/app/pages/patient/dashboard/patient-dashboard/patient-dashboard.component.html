@@ -1,0 +1,424 @@
+<div class="container py-4">
+
+  <!-- ========================================= -->
+  <!-- TOP NAVIGATION -->
+  <!-- ========================================= -->
+
+  <div class="clinic-page-header mb-4">
+
+    <div class="clinic-brand">
+
+      <span class="clinic-brand-icon">
+        🦴
+      </span>
+
+      <span class="clinic-brand-text">
+
+        <span class="clinic-brand-name">
+          Shyam Ortho Care
+        </span>
+
+        <span class="clinic-brand-subtitle">
+          Orthopaedic Care & Wellness
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="clinic-header-actions">
+
+      <a
+        routerLink="/patient/dashboard"
+        class="btn btn-light clinic-nav-btn">
+
+        Dashboard
+
+      </a>
+
+      <a
+        routerLink="/patient/slots"
+        class="btn btn-light clinic-nav-btn">
+
+        Book Appointment
+
+      </a>
+
+      <a
+        routerLink="/patient/appointments"
+        class="btn btn-light clinic-nav-btn">
+
+        My Appointments
+
+      </a>
+
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- ERROR -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- LOADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="text-center py-5">
+
+    <div class="spinner-border"></div>
+
+    <p class="text-muted mt-3">
+      Loading your dashboard...
+    </p>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- DASHBOARD -->
+  <!-- ========================================= -->
+
+  <div *ngIf="!loading && user">
+
+
+    <!-- ===================================== -->
+    <!-- WELCOME -->
+    <!-- ===================================== -->
+
+    <div class="clinic-welcome mb-4">
+
+      <div class="row align-items-center">
+
+        <div class="col-md-8">
+
+          <p class="mb-2">
+            Patient Portal
+          </p>
+
+          <h1 class="mb-2">
+            Welcome, {{ user.name }} 👋
+          </h1>
+
+          <p class="mb-0">
+            Manage your appointments and stay connected
+            with Shyam Ortho Care.
+          </p>
+
+        </div>
+
+        <div class="col-md-4 text-md-end mt-4 mt-md-0">
+
+          <div class="clinic-welcome-icon">
+            🦴
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- QUICK ACTIONS -->
+    <!-- ===================================== -->
+
+    <div class="mb-4">
+
+      <div class="mb-3">
+
+        <h3 class="mb-1">
+          What would you like to do?
+        </h3>
+
+        <p class="text-muted mb-0">
+          Manage your care from one place.
+        </p>
+
+      </div>
+
+
+      <div class="row">
+
+
+        <!-- BOOK -->
+
+        <div class="col-md-6 mb-4">
+
+          <div class="card clinic-action-card">
+
+            <div class="card-body">
+
+              <div class="clinic-action-icon">
+                📅
+              </div>
+
+              <h4>
+                Book an Appointment
+              </h4>
+
+              <p>
+                Find an available time and schedule
+                your visit with our orthopaedic specialist.
+              </p>
+
+              <a
+                routerLink="/patient/slots"
+                class="btn btn-primary">
+
+                Book a Visit →
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- APPOINTMENTS -->
+
+        <div class="col-md-6 mb-4">
+
+          <div class="card clinic-action-card">
+
+            <div class="card-body">
+
+              <div class="clinic-action-icon">
+                📋
+              </div>
+
+              <h4>
+                My Appointments
+              </h4>
+
+              <p>
+                View your upcoming visits, appointment
+                status and previous appointments.
+              </p>
+
+              <a
+                routerLink="/patient/appointments"
+                class="btn btn-outline-primary">
+
+                View Appointments →
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- CLINIC INFORMATION -->
+    <!-- ===================================== -->
+
+    <div class="row">
+
+
+      <!-- WHY SHYAM ORTHO CARE -->
+
+      <div class="col-md-7 mb-4">
+
+        <div class="card h-100">
+
+          <div class="card-body">
+
+            <div class="d-flex align-items-center mb-3">
+
+              <div class="clinic-action-icon mb-0 me-3">
+                🩺
+              </div>
+
+              <div>
+
+                <h4 class="mb-1">
+                  Shyam Ortho Care
+                </h4>
+
+                <p class="text-muted mb-0">
+                  Orthopaedic care focused on your recovery.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="row">
+
+              <div class="col-sm-6 mb-3">
+
+                <strong>
+                  ✓ Personalised Care
+                </strong>
+
+                <p class="text-muted small mb-0 mt-1">
+                  Care tailored to your individual needs.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6 mb-3">
+
+                <strong>
+                  ✓ Expert Consultation
+                </strong>
+
+                <p class="text-muted small mb-0 mt-1">
+                  Professional orthopaedic consultation.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6">
+
+                <strong>
+                  ✓ Convenient Booking
+                </strong>
+
+                <p class="text-muted small mb-0 mt-1">
+                  Schedule your visit online with ease.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6">
+
+                <strong>
+                  ✓ Patient First
+                </strong>
+
+                <p class="text-muted small mb-0 mt-1">
+                  Your comfort and health come first.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACCOUNT -->
+
+      <div class="col-md-5 mb-4">
+
+        <div class="card h-100">
+
+          <div class="card-body">
+
+            <h4 class="mb-3">
+              Your Account
+            </h4>
+
+            <hr>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Name
+              </span>
+
+              <div class="fw-semibold mt-1">
+                {{ user.name }}
+              </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Email
+              </span>
+
+              <div class="fw-semibold mt-1">
+                {{ user.email }}
+              </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Phone
+              </span>
+
+              <div class="fw-semibold mt-1">
+                {{ user.phone }}
+              </div>
+
+            </div>
+
+
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+
+  <span class="badge bg-success">
+    Patient Account
+  </span>
+
+  <a
+    routerLink="/patient/profile"
+    class="btn btn-sm btn-outline-primary">
+
+    ✏️ Edit Profile
+
+  </a>
+
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

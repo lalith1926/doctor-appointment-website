@@ -1,0 +1,639 @@
+<div class="container py-4">
+
+  <!-- ========================================= -->
+  <!-- HEADER -->
+  <!-- ========================================= -->
+
+  <div class="clinic-page-header mb-4">
+
+    <div class="clinic-brand">
+
+      <span class="clinic-brand-icon">
+        🦴
+      </span>
+
+      <span class="clinic-brand-text">
+
+        <span class="clinic-brand-name">
+          Shyam Ortho Care
+        </span>
+
+        <span class="clinic-brand-subtitle">
+          Orthopaedic Care & Wellness
+        </span>
+
+      </span>
+
+    </div>
+
+
+    <div class="clinic-header-actions">
+
+      <a
+        routerLink="/doctor/dashboard"
+        class="btn btn-light clinic-nav-btn">
+
+        Dashboard
+
+      </a>
+
+      <a
+        routerLink="/doctor/slots"
+        class="btn btn-light clinic-nav-btn">
+
+        Manage Slots
+
+      </a>
+
+      <a
+        routerLink="/doctor/appointments"
+        class="btn btn-light clinic-nav-btn">
+
+        Appointments
+
+      </a>
+
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- ERROR -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger">
+
+    {{ errorMessage }}
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- LOADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="text-center py-5">
+
+    <div class="spinner-border mb-3"></div>
+
+    <p class="text-muted">
+      Loading your dashboard...
+    </p>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- DASHBOARD -->
+  <!-- ========================================= -->
+
+  <div *ngIf="!loading && user">
+
+
+    <!-- ===================================== -->
+    <!-- WELCOME -->
+    <!-- ===================================== -->
+
+    <div class="clinic-doctor-welcome mb-4">
+
+      <div class="row align-items-center">
+
+        <div class="col-md-8">
+
+          <span class="clinic-dashboard-label">
+            DOCTOR PORTAL
+          </span>
+
+          <h1 class="mt-2 mb-2">
+            Welcome, Dr. {{ user.name }} 👨‍⚕️
+          </h1>
+
+          <p class="mb-0">
+            Manage your appointment schedule and provide
+            excellent care to your patients through
+            Shyam Ortho Care.
+          </p>
+
+        </div>
+
+
+        <div
+          class="col-md-4 text-md-end mt-4 mt-md-0">
+
+          <div class="clinic-doctor-icon">
+            🩺
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ===================================== -->
+<!-- TODAY'S OVERVIEW -->
+<!-- ===================================== -->
+
+<div class="mb-5">
+
+  <div class="mb-3">
+
+    <h3 class="mb-1">
+      Today's Overview
+    </h3>
+
+    <p class="text-muted mb-0">
+      Your appointment summary for today.
+    </p>
+
+  </div>
+
+
+  <!-- LOADING -->
+
+  <div
+    *ngIf="appointmentsLoading"
+    class="today-stats-loading">
+
+    <div class="spinner-border spinner-border-sm me-2"></div>
+
+    Loading today's appointments...
+
+  </div>
+
+
+  <!-- STATISTICS -->
+
+  <div
+    *ngIf="!appointmentsLoading"
+    class="row">
+
+
+    <!-- TOTAL -->
+
+    <div class="col-md-6 col-lg mb-3">
+
+      <div class="clinic-stat-card total-stat">
+
+        <div class="clinic-stat-icon">
+          📅
+        </div>
+
+        <div class="clinic-stat-content">
+
+          <span>
+            Today's Appointments
+          </span>
+
+          <strong>
+            {{ totalToday }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- PENDING -->
+
+    <div class="col-md-6 col-lg mb-3">
+
+      <div class="clinic-stat-card pending-stat">
+
+        <div class="clinic-stat-icon">
+          ⏳
+        </div>
+
+        <div class="clinic-stat-content">
+
+          <span>
+            Pending
+          </span>
+
+          <strong>
+            {{ pendingToday }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CONFIRMED -->
+
+    <div class="col-md-6 col-lg mb-3">
+
+      <div class="clinic-stat-card confirmed-stat">
+
+        <div class="clinic-stat-icon">
+          ✓
+        </div>
+
+        <div class="clinic-stat-content">
+
+          <span>
+            Confirmed
+          </span>
+
+          <strong>
+            {{ confirmedToday }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- COMPLETED -->
+
+    <div class="col-md-6 col-lg mb-3">
+
+      <div class="clinic-stat-card completed-stat">
+
+        <div class="clinic-stat-icon">
+          🏁
+        </div>
+
+        <div class="clinic-stat-content">
+
+          <span>
+            Completed
+          </span>
+
+          <strong>
+            {{ completedToday }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- CANCELLED -->
+
+    <div class="col-md-6 col-lg mb-3">
+
+      <div class="clinic-stat-card cancelled-stat">
+
+        <div class="clinic-stat-icon">
+          ✕
+        </div>
+
+        <div class="clinic-stat-content">
+
+          <span>
+            Cancelled
+          </span>
+
+          <strong>
+            {{ cancelledToday }}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+    <!-- ===================================== -->
+    <!-- QUICK ACTIONS -->
+    <!-- ===================================== -->
+
+    <div class="mb-4">
+
+      <div class="mb-3">
+
+        <h3 class="mb-1">
+          Clinic Management
+        </h3>
+
+        <p class="text-muted mb-0">
+          Manage your schedule and patient appointments.
+        </p>
+
+      </div>
+
+
+      <div class="row">
+
+
+        <!-- MANAGE SLOTS -->
+
+        <div class="col-md-6 mb-4">
+
+          <div class="card clinic-action-card h-100">
+
+            <div class="card-body p-4">
+
+              <div class="clinic-action-icon">
+                📅
+              </div>
+
+              <h4>
+                Manage Appointment Slots
+              </h4>
+
+              <p>
+                Create available consultation times and
+                manage your daily appointment schedule.
+              </p>
+
+              <a
+                routerLink="/doctor/slots"
+                class="btn btn-primary">
+
+                Manage Slots →
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- APPOINTMENTS -->
+
+        <div class="col-md-6 mb-4">
+
+          <div class="card clinic-action-card h-100">
+
+            <div class="card-body p-4">
+
+              <div class="clinic-action-icon">
+                📋
+              </div>
+
+              <h4>
+                Patient Appointments
+              </h4>
+
+              <p>
+                View your patients, confirm appointments,
+                complete consultations and manage
+                cancellations.
+              </p>
+
+              <a
+                routerLink="/doctor/appointments"
+                class="btn btn-outline-primary">
+
+                View Appointments →
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- DOCTOR INFORMATION -->
+    <!-- ===================================== -->
+
+    <div class="row">
+
+
+      <!-- CLINIC INFO -->
+
+      <div class="col-md-7 mb-4">
+
+        <div class="card h-100">
+
+          <div class="card-body p-4">
+
+            <div class="d-flex align-items-center mb-3">
+
+              <div
+                class="clinic-action-icon mb-0 me-3">
+
+                🩺
+
+              </div>
+
+              <div>
+
+                <h4 class="mb-1">
+                  Shyam Ortho Care
+                </h4>
+
+                <p class="text-muted mb-0">
+                  Orthopaedic Care & Wellness
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <h5 class="mb-3">
+              Your Responsibilities
+            </h5>
+
+
+            <div class="row">
+
+              <div class="col-sm-6 mb-3">
+
+                <strong>
+                  ✓ Manage Schedule
+                </strong>
+
+                <p class="text-muted small mt-1 mb-0">
+                  Keep your appointment availability
+                  up to date.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6 mb-3">
+
+                <strong>
+                  ✓ Review Patients
+                </strong>
+
+                <p class="text-muted small mt-1 mb-0">
+                  Review and manage patient appointments.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6">
+
+                <strong>
+                  ✓ Confirm Visits
+                </strong>
+
+                <p class="text-muted small mt-1 mb-0">
+                  Confirm upcoming patient consultations.
+                </p>
+
+              </div>
+
+
+              <div class="col-sm-6">
+
+                <strong>
+                  ✓ Complete Consultations
+                </strong>
+
+                <p class="text-muted small mt-1 mb-0">
+                  Mark completed visits after consultation.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ACCOUNT -->
+
+      <div class="col-md-5 mb-4">
+
+        <div class="card h-100">
+
+          <div class="card-body p-4">
+
+            <h4 class="mb-3">
+              Doctor Account
+            </h4>
+
+            <hr>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Name
+              </span>
+
+              <div class="fw-semibold mt-1">
+                Dr. {{ user.name }}
+              </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Email
+              </span>
+
+              <div class="fw-semibold mt-1">
+                {{ user.email }}
+              </div>
+
+            </div>
+
+
+            <div class="mb-3">
+
+              <span class="clinic-stat-label">
+                Phone
+              </span>
+
+              <div class="fw-semibold mt-1">
+                {{ user.phone }}
+              </div>
+
+            </div>
+
+
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+
+  <span class="badge bg-primary">
+    Doctor Account
+  </span>
+
+  <a
+    routerLink="/doctor/profile"
+    class="btn btn-sm btn-outline-primary">
+
+    ✏️ Edit Profile
+
+  </a>
+
+</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ===================================== -->
+    <!-- CLINIC FOOTER -->
+    <!-- ===================================== -->
+
+    <div class="card clinic-footer-card mt-2 mb-4">
+
+      <div class="card-body text-center py-4">
+
+        <div class="clinic-footer-icon">
+          🦴
+        </div>
+
+        <h5 class="mt-2">
+          Shyam Ortho Care
+        </h5>
+
+        <p class="text-muted mb-0">
+          Better care. Better mobility. Better life.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

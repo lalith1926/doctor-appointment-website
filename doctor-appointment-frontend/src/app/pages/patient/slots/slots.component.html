@@ -1,0 +1,787 @@
+<div class="container py-4">
+
+  <!-- ========================================= -->
+  <!-- HEADER -->
+  <!-- ========================================= -->
+
+  <div class="clinic-page-header">
+
+    <div class="clinic-header-content">
+
+      <div class="d-flex align-items-center gap-3 mb-2">
+
+        <div class="clinic-action-icon mb-0">
+          🦴
+        </div>
+
+        <div>
+
+          <h2 class="mb-0">
+            Book an Appointment
+          </h2>
+
+          <p class="text-muted mb-0">
+            Shyam Ortho Care
+          </p>
+
+        </div>
+
+      </div>
+
+      <p class="text-muted mt-3 mb-0">
+
+        Choose your doctor, appointment date
+        and a convenient consultation time.
+
+      </p>
+
+    </div>
+
+
+    <div class="clinic-header-actions">
+
+      <a
+        routerLink="/patient/appointments"
+        class="btn btn-light">
+
+        My Appointments
+
+      </a>
+
+      <a
+        routerLink="/patient/dashboard"
+        class="btn btn-outline-primary">
+
+        ← Dashboard
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SUCCESS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="successMessage"
+    class="alert alert-success mb-4">
+
+    <div
+      class="d-flex align-items-center justify-content-between gap-3">
+
+      <div class="d-flex align-items-center">
+
+        <span class="success-icon me-2">
+          ✓
+        </span>
+
+        <span>
+          {{ successMessage }}
+        </span>
+
+      </div>
+
+      <a
+        routerLink="/patient/appointments"
+        class="btn btn-sm btn-success">
+
+        View Appointment
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- ERROR -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert alert-danger mb-4">
+
+    <div class="d-flex align-items-center">
+
+      <span class="error-icon me-2">
+        !
+      </span>
+
+      <span>
+        {{ errorMessage }}
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- DOCTOR + DATE SELECTOR -->
+  <!-- ========================================= -->
+
+  <div class="card date-selector-card mb-4">
+
+    <div class="card-body p-4">
+
+      <div class="row align-items-end">
+
+
+        <!-- =====================================
+             DOCTOR SELECTOR
+             ===================================== -->
+
+        <div class="col-md-5">
+
+          <label
+            for="doctor"
+            class="form-label">
+
+            🩺 Choose your doctor
+
+          </label>
+
+
+          <select
+            id="doctor"
+            class="form-select"
+            [(ngModel)]="selectedDoctorId"
+            (ngModelChange)="onDoctorChange()"
+            [disabled]="doctorsLoading || loading">
+
+            <option
+              [ngValue]="null">
+
+              Select a doctor
+
+            </option>
+
+
+            <option
+              *ngFor="let doctor of doctors"
+              [ngValue]="doctor.d_id">
+
+              {{ doctor.d_name }}
+
+              <span
+                *ngIf="doctor.d_specialization">
+
+                - {{ doctor.d_specialization }}
+
+              </span>
+
+            </option>
+
+          </select>
+
+
+          <small
+            *ngIf="doctorsLoading"
+            class="text-muted">
+
+            Loading doctors...
+
+          </small>
+
+
+          <small
+            *ngIf="
+              !doctorsLoading &&
+              doctors.length === 0
+            "
+            class="text-danger">
+
+            No active doctors are currently available.
+
+          </small>
+
+        </div>
+
+
+        <!-- =====================================
+             DATE SELECTOR
+             ===================================== -->
+
+        <div class="col-md-4 mt-3 mt-md-0">
+
+          <label
+            for="appointmentDate"
+            class="form-label">
+
+            📅 Choose appointment date
+
+          </label>
+
+
+          <input
+            id="appointmentDate"
+            type="date"
+            class="form-control"
+            [(ngModel)]="selectedDate"
+          />
+
+
+          <small class="text-muted">
+
+            Select a date to see available
+            consultation times.
+
+          </small>
+
+        </div>
+
+
+        <!-- =====================================
+             CHECK AVAILABILITY
+             ===================================== -->
+
+        <div class="col-md-3 mt-3 mt-md-0">
+
+          <button
+            type="button"
+            class="btn btn-primary w-100"
+
+            [disabled]="
+              loading ||
+              doctorsLoading ||
+              !selectedDoctorId ||
+              !selectedDate
+            "
+
+            (click)="loadSlots()">
+
+            <span
+              *ngIf="loading"
+              class="spinner-border spinner-border-sm me-2">
+            </span>
+
+
+            {{
+              loading
+                ? 'Checking...'
+                : 'Check Availability'
+            }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SELECTED DOCTOR INFORMATION -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      selectedDoctor
+    "
+    class="card mb-4 selected-doctor-card">
+
+    <div class="card-body p-4">
+
+      <div
+        class="
+          d-flex
+          align-items-center
+          justify-content-between
+          gap-3
+          flex-wrap
+        ">
+
+
+        <!-- DOCTOR DETAILS -->
+
+        <div
+          class="d-flex align-items-center gap-3">
+
+          <div class="clinic-action-icon mb-0">
+
+            🩺
+
+          </div>
+
+
+          <div>
+
+            <h4 class="mb-1">
+
+              {{ selectedDoctor.d_name }}
+
+            </h4>
+
+
+            <p
+              *ngIf="selectedDoctor.d_specialization"
+              class="text-muted mb-1">
+
+              {{ selectedDoctor.d_specialization }}
+
+            </p>
+
+
+            <small
+              *ngIf="
+                selectedDoctor.d_qualification ||
+                selectedDoctor.d_experience
+              "
+              class="text-muted">
+
+              <span
+                *ngIf="selectedDoctor.d_qualification">
+
+                {{ selectedDoctor.d_qualification }}
+
+              </span>
+
+
+              <span
+                *ngIf="
+                  selectedDoctor.d_qualification &&
+                  selectedDoctor.d_experience
+                ">
+
+                •
+                
+              </span>
+
+
+              <span
+                *ngIf="selectedDoctor.d_experience">
+
+                {{ selectedDoctor.d_experience }}
+
+              </span>
+
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONSULTATION INFORMATION -->
+
+        <div class="text-md-end">
+
+          <div class="detail-label">
+
+            Consultation Fee
+
+          </div>
+
+
+          <div class="fw-bold fs-5">
+
+            ₹{{ selectedDoctor.d_consultationFee }}
+
+          </div>
+
+
+          <small
+            *ngIf="
+              selectedDoctor.d_availableFrom &&
+              selectedDoctor.d_availableTo
+            "
+            class="text-muted">
+
+            {{ selectedDoctor.d_availableFrom }}
+
+            -
+
+            {{ selectedDoctor.d_availableTo }}
+
+          </small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SELECTED DATE / AVAILABLE HEADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      selectedDate &&
+      selectedDoctor
+    "
+    class="available-heading mb-4">
+
+    <div>
+
+      <h4 class="mb-1">
+
+        Available appointment times
+
+      </h4>
+
+
+      <p class="text-muted mb-0">
+
+        Showing available times for
+
+        <strong>
+          {{ selectedDate }}
+        </strong>
+
+      </p>
+
+    </div>
+
+
+    <div class="doctor-indicator">
+
+      🩺 {{ selectedDoctor.d_name }}
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- LOADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="card mb-4">
+
+    <div class="card-body text-center py-5">
+
+      <div class="spinner-border mb-3"></div>
+
+
+      <h5>
+        Checking availability
+      </h5>
+
+
+      <p class="text-muted mb-0">
+
+        Finding available appointment
+        times for
+
+        {{ selectedDoctor?.d_name }}
+
+        ...
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- NO DOCTORS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      !doctorsLoading &&
+      doctors.length === 0 &&
+      !errorMessage
+    "
+    class="card mb-4">
+
+    <div class="card-body text-center py-5">
+
+      <div
+        class="clinic-action-icon mx-auto mb-3">
+
+        🩺
+
+      </div>
+
+
+      <h4>
+
+        No doctors available
+
+      </h4>
+
+
+      <p class="text-muted mb-0">
+
+        There are currently no active doctors
+        available for appointments.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- NO SLOTS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      selectedDoctor &&
+      slots.length === 0 &&
+      !errorMessage
+    "
+    class="card">
+
+    <div class="card-body text-center py-5">
+
+      <div
+        class="clinic-action-icon mx-auto mb-3">
+
+        📅
+
+      </div>
+
+
+      <h4>
+
+        No appointments available
+
+      </h4>
+
+
+      <p class="text-muted mb-0">
+
+        There are no available consultation
+        times for
+
+        <strong>
+          {{ selectedDoctor.d_name }}
+        </strong>
+
+        on
+
+        <strong>
+          {{ selectedDate }}
+        </strong>.
+
+        Please try another date.
+
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- AVAILABLE SLOTS -->
+  <!-- ========================================= -->
+
+  <div
+    class="row"
+
+    *ngIf="
+      !loading &&
+      selectedDoctor &&
+      slots.length > 0
+    ">
+
+
+    <div
+      class="col-md-6 col-lg-4 mb-4"
+
+      *ngFor="let slot of slots">
+
+
+      <div class="card slot-card h-100">
+
+        <div class="card-body p-4">
+
+
+          <!-- =====================================
+               TIME
+               ===================================== -->
+
+          <div
+            class="
+              d-flex
+              justify-content-between
+              align-items-start
+              mb-3
+            ">
+
+            <div>
+
+              <div class="clinic-appointment-time">
+
+                {{ slot.startTime }}
+
+              </div>
+
+
+              <div class="text-muted small">
+
+                to {{ slot.endTime }}
+
+              </div>
+
+            </div>
+
+
+            <span class="badge bg-success">
+
+              Available
+
+            </span>
+
+          </div>
+
+
+          <hr>
+
+
+          <!-- =====================================
+               DATE
+               ===================================== -->
+
+          <div class="appointment-detail mb-3">
+
+            <div class="detail-label">
+
+              Appointment Date
+
+            </div>
+
+
+            <div class="fw-semibold mt-1">
+
+              📅 {{ slot.date }}
+
+            </div>
+
+          </div>
+
+
+          <!-- =====================================
+               DOCTOR
+               ===================================== -->
+
+          <div class="appointment-detail mb-3">
+
+            <div class="detail-label">
+
+              Doctor
+
+            </div>
+
+
+            <div class="fw-semibold mt-1">
+
+              🩺 {{ selectedDoctor.d_name }}
+
+            </div>
+
+          </div>
+
+
+          <!-- =====================================
+               SPECIALIZATION
+               ===================================== -->
+
+          <div
+            *ngIf="selectedDoctor.d_specialization"
+            class="appointment-detail mb-3">
+
+            <div class="detail-label">
+
+              Specialization
+
+            </div>
+
+
+            <div class="mt-1">
+
+              {{ selectedDoctor.d_specialization }}
+
+            </div>
+
+          </div>
+
+
+          <!-- =====================================
+               BOOK
+               ===================================== -->
+
+          <button
+            type="button"
+
+            class="btn btn-primary w-100 mt-2"
+
+            [disabled]="
+              bookingSlotId !== null
+            "
+
+            (click)="bookAppointment(slot)">
+
+
+            <span
+              *ngIf="
+                bookingSlotId === slot.id
+              "
+              class="spinner-border spinner-border-sm me-2">
+            </span>
+
+
+            {{
+              bookingSlotId === slot.id
+
+                ? 'Booking...'
+
+                : 'Book This Time'
+            }}
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- FOOTER NOTE -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      selectedDoctor &&
+      slots.length > 0
+    "
+    class="text-center mt-2 mb-4">
+
+    <p class="text-muted small mb-0">
+
+      🔒 Your appointment information is
+      securely handled by Shyam Ortho Care.
+
+    </p>
+
+  </div>
+
+</div>

@@ -1,0 +1,397 @@
+<div class="appointments-page">
+
+  <!-- ========================================= -->
+  <!-- HEADER -->
+  <!-- ========================================= -->
+
+  <div class="page-header">
+
+    <div>
+
+      <span class="eyebrow">
+        SHYAM ORTHO CARE
+      </span>
+
+      <h1>
+        My Appointments
+      </h1>
+
+      <p>
+        View and manage your upcoming consultations.
+      </p>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <a
+        routerLink="/patient/slots"
+        class="btn-primary">
+
+        + Book Appointment
+
+      </a>
+
+      <a
+        routerLink="/patient/dashboard"
+        class="btn-outline">
+
+        Dashboard
+
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SUCCESS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="successMessage"
+    class="alert success">
+
+    <span class="alert-icon">
+      ✓
+    </span>
+
+    <span>
+      {{ successMessage }}
+    </span>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- ERROR -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="errorMessage"
+    class="alert error">
+
+    <span class="alert-icon">
+      !
+    </span>
+
+    <span>
+      {{ errorMessage }}
+    </span>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- LOADING -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="loading"
+    class="loading-card">
+
+    <div class="spinner"></div>
+
+    <h3>
+      Loading appointments
+    </h3>
+
+    <p>
+      Please wait while we retrieve your appointments.
+    </p>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- EMPTY -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      appointments.length === 0 &&
+      !errorMessage
+    "
+    class="empty-card">
+
+    <div class="empty-icon">
+      📅
+    </div>
+
+    <h2>
+      No appointments found
+    </h2>
+
+    <p>
+      You don't have any appointments yet.
+      Book your first consultation with Dr. Shyam.
+    </p>
+
+    <a
+      routerLink="/patient/slots"
+      class="btn-primary">
+
+      Book Your Appointment
+
+    </a>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- APPOINTMENTS -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      appointments.length > 0
+    "
+    class="appointments-grid">
+
+    <div
+      class="appointment-card"
+      *ngFor="let appointment of appointments">
+
+
+      <!-- ===================================== -->
+      <!-- CARD HEADER -->
+      <!-- ===================================== -->
+
+      <div class="appointment-top">
+
+        <div>
+
+          <span class="appointment-label">
+            Appointment
+          </span>
+
+          <h2>
+            #{{ $any(appointment).appointmentId }}
+          </h2>
+
+        </div>
+
+
+        <span
+          class="status"
+          [ngClass]="
+            getStatusClass(appointment.status)
+          ">
+
+          {{ appointment.status }}
+
+        </span>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- DOCTOR -->
+      <!-- ===================================== -->
+
+      <div class="doctor-section">
+
+        <div class="doctor-icon">
+          🩺
+        </div>
+
+        <div>
+
+          <span>
+            Doctor
+          </span>
+
+          <h3>
+            {{
+              appointment.doctorName ||
+              'Dr. Shyam'
+            }}
+          </h3>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- DETAILS -->
+      <!-- ===================================== -->
+
+      <div class="details-grid">
+
+
+        <div class="detail">
+
+          <span>
+            Date
+          </span>
+
+          <strong>
+            📅 {{ appointment.appointmentDate }}
+          </strong>
+
+        </div>
+
+
+        <div class="detail">
+
+          <span>
+            Time
+          </span>
+
+          <strong>
+            🕐 {{ appointment.appointmentTime }}
+          </strong>
+
+        </div>
+
+
+        <div
+          class="detail"
+          *ngIf="
+            appointment.consultationFee !== undefined
+          ">
+
+          <span>
+            Consultation Fee
+          </span>
+
+          <strong>
+            ₹{{ appointment.consultationFee }}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- PENDING -->
+      <!-- ===================================== -->
+
+      <div
+        *ngIf="appointment.status === 'PENDING'"
+        class="status-message pending-message">
+
+        <span>⏳</span>
+
+        <span>
+          Your appointment is waiting for doctor confirmation.
+        </span>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- CONFIRMED -->
+      <!-- ===================================== -->
+
+      <div
+        *ngIf="appointment.status === 'CONFIRMED'"
+        class="status-message confirmed-message">
+
+        <span>✓</span>
+
+        <span>
+          Your appointment has been confirmed by the doctor.
+        </span>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- COMPLETED -->
+      <!-- ===================================== -->
+
+      <div
+        *ngIf="appointment.status === 'COMPLETED'"
+        class="status-message completed-message">
+
+        <span>✓</span>
+
+        <span>
+          This consultation has been completed.
+        </span>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- CANCELLED -->
+      <!-- ===================================== -->
+
+      <div
+        *ngIf="appointment.status === 'CANCELLED'"
+        class="status-message cancelled-message">
+
+        <span>×</span>
+
+        <span>
+          This appointment has been cancelled.
+        </span>
+
+      </div>
+
+
+      <!-- ===================================== -->
+      <!-- ACTION -->
+      <!-- ===================================== -->
+
+      <div class="appointment-actions">
+
+        <button
+          *ngIf="
+            appointment.status === 'PENDING' ||
+            appointment.status === 'CONFIRMED'
+          "
+          type="button"
+          class="cancel-btn"
+
+          [disabled]="
+            processingAppointmentId ===
+            $any(appointment).appointmentId
+          "
+
+          (click)="
+            cancelAppointment(
+              $any(appointment).appointmentId
+            )
+          ">
+
+          {{
+            processingAppointmentId ===
+            $any(appointment).appointmentId
+              ? 'Cancelling...'
+              : 'Cancel Appointment'
+          }}
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================= -->
+  <!-- SECURITY NOTE -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="
+      !loading &&
+      appointments.length > 0
+    "
+    class="security-note">
+
+    🔒 Your appointment information is securely
+    handled by Shyam Ortho Care.
+
+  </div>
+
+</div>
